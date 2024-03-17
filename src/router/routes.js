@@ -46,7 +46,7 @@ const routes = [
   },
   {
     path: '/auth',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('layouts/PageLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Auth.vue') }
     ]
@@ -72,20 +72,7 @@ const routes = [
       { path: '', component: () => import('pages/Banlist.vue') }
     ]
   },
-  {
-    path: '/main',
-    component: () => import('layouts/PageLayout.vue'),
-    children: [
-      { path: '', component: () => import('pages/main.vue') }
-    ]
-  },
-  {
-  path: '/news',
-  component: () => import('layouts/PageLayout.vue'),
-  children: [
-  { path: '', component: () => import('pages/News.vue') }
-]
-},
+
 
   // Always leave this as last one,
   // but you can also remove it

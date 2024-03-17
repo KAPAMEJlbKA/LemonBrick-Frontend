@@ -1,12 +1,13 @@
 <script>
 import { useQuasar } from 'quasar';
-
 import { defineComponent, ref, computed } from 'vue'
 import { useRouter } from "vue-router"
 import { mapState, useStore } from 'vuex';
+import HeadAvatar from "components/utils/HeadAvatar.vue";
 
 export default defineComponent({
-  name: 'Pagelayout',
+  name: 'PageLayout',
+  components: {HeadAvatar},
 
   setup() {
     const $router = useRouter()
@@ -15,8 +16,10 @@ export default defineComponent({
     const leftDrawerOpen = ref(false)
 
     return {
+      tab: ref('mails'),
       leftDrawerOpen,
       isAuth: computed(() => $store.state.api.isAuth),
+      user: computed(() => $store.state.api.user),
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value
       },
@@ -49,58 +52,103 @@ export default defineComponent({
 
 <template>
   <q-layout view="hHh Lpr lFf">
-    <q-header elevated class="header">
+    <q-header class="header" >
       <q-toolbar>
-        <q-item clickable :to="'/'" class="logo-btn"><img src="../assets/icon.png" alt="logo" class="logo"></q-item>
+        <q-item class="logo-btn" clickable :to="'/'"><img src="../assets/icon.png" alt="logo" class="logo" ></q-item>
+        <q-list class="nav">
+          <q-item clickable :to="'/'" class="nav-element" active-class="nav-element-active">
+            <q-item-section>
+              <q-item-label>Главная</q-item-label>
+            </q-item-section>
+          </q-item>
+          <q-item clickable :to="'/blog'" class="nav-element" active-class="nav-element-active">
+            <q-item-section>
+              <q-item-label>Блог</q-item-label>
+            </q-item-section>
+          </q-item>
+          <q-item clickable class="nav-element" active-class="nav-element-active">
+            <q-item-section>
+              <q-item-label>
+                Карта
+                <q-menu auto-close class="dropmenu">
+                  <q-list dense class="dropmenu-list">
+                    <q-item clickable :to="'/map'" class="dropmenu-item">
+                      <q-item-section>Lemonila</q-item-section>
+                    </q-item>
 
-        <q-toolbar-title v-if="isAuth === true">
-          LemonBrick Вход выполнен.
-        </q-toolbar-title>
-        <q-toolbar-title v-if="isAuth === false">
-          LemonBrick Начни играть с нами!
-        </q-toolbar-title>
-        <q-btn v-if="isAuth === true" flat icon="logout" @click="logout"></q-btn>
-      </q-toolbar>
-    </q-header>
+                  </q-list>
+                </q-menu>
+              </q-item-label>
+            </q-item-section>
+          </q-item>
+          <q-item clickable :to="'/rules'" class="nav-element" active-class="nav-element-active">
+            <q-item-section>
+              <q-item-label>Правила</q-item-label>
+            </q-item-section>
+          </q-item>
+          <q-item clickable :to="'/about'" class="nav-element" active-class="nav-element-active">
+            <q-item-section>
+              <q-item-label>О нас</q-item-label>
+            </q-item-section>
+          </q-item>
+        </q-list>
 
-    <!--q-drawer class="leftMenu" v-model="leftDrawerOpen" bordered>
-      <q-list>
-        <q-item-label style="color:white" header>
-          Меню
-        </q-item-label>
-        <q-item clickable :to="'/main'">
-          <q-item-section>
-            <q-item-label>Главная</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable :to="isAuth === true ? '/cabinet' : '/auth'">
+        <q-item v-if="isAuth === false" clickable :to="'/auth'" class="profile">
           <q-item-section>
             <q-item-label>Кабинет</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item v-if="isAuth === true" clickable to="/users">
-          <q-item-section>
-            <q-item-label>Пользователи</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item v-if="isAuth === true" clickable to="/shop/items">
-          <q-item-section>
-            <q-item-label>Магазин предметов</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item v-if="isAuth === true" clickable to="/shop/groups">
-          <q-item-section>
-            <q-item-label>Магазин привилегий</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item v-if="isAuth === true" clickable to="/banlist">
-          <q-item-section>
-            <q-item-label>Бан Лист</q-item-label>
-          </q-item-section>
-        </q-item>
-      </q-list>
-    </q-drawer-->
+        <q-item v-if="isAuth === true" clickable class="profile" no-pointer-events>
+          <q-item-section class="user">
+            {{ user.username }}
+            <q-menu>
+              <div class="row no-wrap q-pa-md">
+                <div class="column">
+                  <q-item clickable :to="'/cabinet'" class="dropmenu-item">
+                    <q-item-section>Профиль</q-item-section>
+                  </q-item>
+                  <q-item clickable :to="'/shop/items'" class="dropmenu-item">
+                    <q-item-section>Магазин</q-item-section>
+                  </q-item>
+                </div>
 
+                <q-separator vertical inset class="q-mx-lg" />
+
+                <div class="column items-center">
+                  <q-avatar size="72px">
+                    <head-avatar :skin="user.assets ? user.assets.skin : null"></head-avatar>
+                  </q-avatar>
+
+                  <div class="text-subtitle1 q-mt-md q-mb-xs">{{ user.username }}</div>
+
+                  <q-btn
+                    color="orange"
+                    label="Выйти"
+                    push
+                    size="sm"
+                    v-close-popup
+                    @click="logout"
+                  />
+                </div>
+              </div>
+            </q-menu>
+
+
+              <!--q-menu auto-close class="dropmenu">
+                <q-list dense class="dropmenu-list">
+                  <q-item clickable :to="'/cabinet'" class="dropmenu-item">
+                    <q-item-section>Профиль</q-item-section>
+                  </q-item>
+                  <q-item clickable class="dropmenu-item">
+                    <q-item-section @click="logout">Выйти</q-item-section>
+                  </q-item>
+                </q-list>
+              </q-menu-->
+          </q-item-section>
+        </q-item>
+        <!--q-btn v-if="isAuth === true" flat icon="logout" @click="logout"></q-btn-->
+      </q-toolbar>
+    </q-header>
     <q-page-container>
       <router-view />
     </q-page-container>
@@ -108,15 +156,48 @@ export default defineComponent({
 </template>
 
 <style>
-.logo-btn {
-  width: 3vw;
-}
 .logo {
-  width: 2.5vw;
+  width: 2.8vw;
   height: auto;
 }
 .header {
-  background-color: rgba(255, 144, 0, 0);
+  background-color: rgba(187, 187, 187, 0.29);
   border: none;
+  position: sticky;
+}
+.text-teal {
+  color: #ffffff;
+  fill: #ffffff;
+}
+
+.nav {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+.nav-element {
+
+}
+.nav-element-active {
+  border-bottom: 1px solid #ffffff;
+}
+
+.dropmenu {
+  margin-left: -2vw;
+  min-width: 100px;
+  border-radius: 0px;
+  background: none;
+  color: #ffffff;
+}
+.dropmenu-item {
+  margin-left: -12px;
+}
+
+.profile {
+  margin-right: 5vw;
+  pointer-events: bounding-box;
+}
+.user {
+  height: 2vh;
 }
 </style>

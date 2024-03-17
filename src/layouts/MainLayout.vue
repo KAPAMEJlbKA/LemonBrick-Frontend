@@ -1,39 +1,52 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="hHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
         <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
 
-        <q-toolbar-title>
-          SimpleCabinet 2
+        <q-toolbar-title v-if="isAuth === true">
+          LemonBrick Вход выполнен.
+        </q-toolbar-title>
+        <q-toolbar-title v-if="isAuth === false">
+          LemonBrick Начни играть с нами!
         </q-toolbar-title>
         <q-btn v-if="isAuth === true" flat icon="logout" @click="logout"></q-btn>
       </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="leftDrawerOpen" bordered>
+    <q-drawer class="leftMenu" v-model="leftDrawerOpen" bordered>
       <q-list>
-        <q-item-label header>
+        <q-item-label style="color:white" header>
           Меню
         </q-item-label>
-        <q-item clickable :to="isAuth === true ? '/cabinet' : '/auth'">
+        <q-item clickable :to="'/main'">
           <q-item-section>
             <q-item-label>Главная</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item clickable to="/users">
+        <q-item clickable :to="isAuth === true ? '/cabinet' : '/auth'">
+          <q-item-section>
+            <q-item-label>Кабинет</q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-item v-if="isAuth === true" clickable to="/users">
           <q-item-section>
             <q-item-label>Пользователи</q-item-label>
           </q-item-section>
         </q-item>
         <q-item v-if="isAuth === true" clickable to="/shop/items">
           <q-item-section>
-            <q-item-label>Магазин предметов <q-badge>ALPHA</q-badge></q-item-label>
+            <q-item-label>Магазин предметов</q-item-label>
           </q-item-section>
         </q-item>
         <q-item v-if="isAuth === true" clickable to="/shop/groups">
           <q-item-section>
-            <q-item-label>Магазин привилегий <q-badge>ALPHA</q-badge></q-item-label>
+              <q-item-label>Магазин привилегий</q-item-label>
+            </q-item-section>
+        </q-item>
+        <q-item v-if="isAuth === true" clickable to="/banlist">
+          <q-item-section>
+            <q-item-label>Бан Лист</q-item-label>
           </q-item-section>
         </q-item>
       </q-list>

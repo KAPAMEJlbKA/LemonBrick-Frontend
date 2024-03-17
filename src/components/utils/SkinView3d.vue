@@ -34,8 +34,8 @@ export default defineComponent({
       });
       let control = createOrbitControls(skinViewer);
       control.enableRotate = true;
-      control.enableZoom = false;
-      control.enablePan = false;
+      control.enableZoom = true;
+      control.enablePan = true;
     });
     return {
       canvas,

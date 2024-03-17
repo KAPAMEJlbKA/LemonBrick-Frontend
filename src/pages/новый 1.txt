@@ -1,0 +1,4 @@
+economy.card.all - получение предметов игроком
+economy.balance - проверка баланса
+economy.pay - перевод средств
+economy.cashe - админская команда добавления денег

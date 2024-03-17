@@ -2,7 +2,7 @@
 const routes = [
   {
     path: '/',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('layouts/PageLayout.vue'),
     children: [
       { path: '', component: () => import('pages/main.vue') }
     ]
@@ -74,7 +74,7 @@ const routes = [
   },
   {
     path: '/main',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('layouts/PageLayout.vue'),
     children: [
       { path: '', component: () => import('pages/main.vue') }
     ]

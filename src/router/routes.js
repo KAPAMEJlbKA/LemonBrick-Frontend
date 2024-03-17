@@ -9,21 +9,21 @@ const routes = [
   },
   {
     path: '/cabinet',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('layouts/PageLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Cabinet.vue') }
     ]
   },
   {
     path: '/users',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('layouts/PageLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Users.vue') }
     ]
   },
   {
     path: '/user/name/:username',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('layouts/PageLayout.vue'),
     children: [
       { path: '', component: () => import('pages/UserByUsername.vue') }
     ],
@@ -31,7 +31,7 @@ const routes = [
   },
   {
     path: '/user/uuid/:uuid',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('layouts/PageLayout.vue'),
     children: [
       { path: '', component: () => import('pages/UserByUUID.vue') }
     ],
@@ -39,7 +39,7 @@ const routes = [
   },
   {
     path: '/register',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('layouts/PageLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Register.vue') }
     ]
@@ -53,21 +53,21 @@ const routes = [
   },
   {
     path: '/shop/items',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('layouts/PageLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Shop.vue') }
     ]
   },
   {
     path: '/shop/groups',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('layouts/PageLayout.vue'),
     children: [
       { path: '', component: () => import('pages/ShopGroup.vue') }
     ]
   },
   {
     path: '/banlist',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('layouts/PageLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Banlist.vue') }
     ]

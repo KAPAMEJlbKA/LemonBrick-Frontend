@@ -61,9 +61,9 @@ export default defineComponent({
               <q-item-label>Главная</q-item-label>
             </q-item-section>
           </q-item>
-          <q-item clickable :to="'/blog'" class="nav-element" active-class="nav-element-active">
+          <q-item clickable :to="'/news'" class="nav-element" active-class="nav-element-active">
             <q-item-section>
-              <q-item-label>Блог</q-item-label>
+              <q-item-label>Новости</q-item-label>
             </q-item-section>
           </q-item>
           <q-item clickable class="nav-element" active-class="nav-element-active">

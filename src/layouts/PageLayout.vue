@@ -101,6 +101,9 @@ export default defineComponent({
         <q-item v-if="isAuth === true" clickable class="profile" no-pointer-events>
           <q-item-section class="user">
             {{ user.username }}
+            <q-avatar size="40px">
+              <head-avatar :skin="user.assets ? user.assets.skin : null"></head-avatar>
+            </q-avatar>
             <q-menu>
               <div class="row no-wrap q-pa-md">
                 <div class="column">
@@ -198,6 +201,6 @@ export default defineComponent({
   pointer-events: bounding-box;
 }
 .user {
-  height: 2vh;
+  height: 3vh;
 }
 </style>

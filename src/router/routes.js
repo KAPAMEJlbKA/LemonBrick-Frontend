@@ -79,7 +79,13 @@ const routes = [
       { path: '', component: () => import('pages/News.vue') }
     ]
   },
-
+  {
+    path: '/rules',
+    component: () => import('layouts/PageLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Rules.vue') }
+    ]
+  },
   // Always leave this as last one,
   // but you can also remove it
   {

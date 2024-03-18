@@ -22,7 +22,7 @@
 }
 
 .logo {
-  margin-top: 8vh;
+  margin-top: 2vh;
   width: 20%; /* Ширина логотипа */
   height: auto;
 }

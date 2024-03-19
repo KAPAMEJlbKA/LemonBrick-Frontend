@@ -101,7 +101,7 @@ export default defineComponent({
         <q-item v-if="isAuth === true" clickable class="profile" no-pointer-events>
           <q-item-section class="user">
             {{ user.username }}
-            <q-avatar size="40px">
+            <q-avatar size="40px" class="user-logo">
               <head-avatar :skin="user.assets ? user.assets.skin : null"></head-avatar>
             </q-avatar>
             <q-menu>
@@ -159,12 +159,15 @@ export default defineComponent({
 </template>
 
 <style>
+.logo-btn {
+  margin-left: 5vw;
+}
 .logo {
   width: 2.8vw;
   height: auto;
 }
 .header {
-  background-color: rgba(187, 187, 187, 0.29);
+  background-color: rgba(187, 187, 187, 0.13);
   border: none;
   position: sticky;
 }
@@ -202,5 +205,8 @@ export default defineComponent({
 }
 .user {
   height: 3vh;
+}
+.user-logo {
+  margin-left: 1vw;
 }
 </style>

@@ -4,12 +4,19 @@
       <img src="../assets/icon.png" alt="LemonBrick" class="logo floating-element" @mouseover="animateLogo" @mouseout="resetLogo" />
       <h1 class="logo-text floating-element">LemonBrick</h1>
       <q-btn unelevated rounded class="main-btn" label="Начать играть" />
+      <server_info></server_info>
     </div>
   </q-page>
 </template>
 
 <script>
+import {defineComponent} from "vue";
+import server_info from "components/server_info.vue";
 
+export default defineComponent({
+  name: 'PageLayout',
+  components: {server_info},
+})
 </script>
 
 <style scoped>

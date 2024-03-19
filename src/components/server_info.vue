@@ -1,12 +1,16 @@
 <template>
   <q-page>
     <q-card class="q-ma-md">
-      <q-card-section>
+      <q-card-section class="main">
         <div v-if="loading">Загрузка...</div>
-        <div v-else>
+        <div v-else >
+          <p>Текущий онлайн на сервере Minecraft: {{ playersOnline }}</p>
+
+        </div>
+        <!--div v-else>
           <p>Текущий онлайн на сервере Minecraft: {{ playersOnline }}</p>
           <q-linear-progress :value="playersOnline" :max="maxPlayers" color="primary" />
-        </div>
+        </div-->
       </q-card-section>
     </q-card>
   </q-page>
@@ -22,7 +26,7 @@ export default {
       loading: true,
       serverStatus: '',
       playersOnline: '',
-      maxPlayers: ''
+      maxPlayers: 100
     };
   },
   mounted() {
@@ -53,6 +57,10 @@ export default {
 };
 </script>
 
-<style scoped>
-/* CSS стили могут быть добавлены здесь, если необходимо */
+<style>
+.main {
+  margin-top: 25vh;
+  width: 45vw;
+  height: 50vh;
+}
 </style>

@@ -1,6 +1,6 @@
 <template>
   <section class="main">
-    <h3 class="head-text">Нашы сервера</h3>
+    <h3 class="head-text">Наши сервера</h3>
     <div class="section">
         <div v-if="loading">Загрузка...</div>
         <div v-else class="wrapper" >
@@ -111,7 +111,7 @@ export default {
   margin-top: 8px;
 }
 .head-text {
-  color: #ffffff;
+  color: rgba(255, 252, 145, 0.67);
   font-weight: 600;
 }
 </style>

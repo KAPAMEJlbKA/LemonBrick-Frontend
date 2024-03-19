@@ -52,7 +52,7 @@ export default defineComponent({
 
 <template>
   <q-layout view="hHh Lpr lFf">
-    <q-header class="header" >
+    <q-header elevated class="header" >
       <q-toolbar>
         <q-item class="logo-btn" clickable :to="'/'"><img src="../assets/icon.png" alt="logo" class="logo" ></q-item>
         <q-list class="nav">
@@ -170,6 +170,7 @@ export default defineComponent({
   background-color: rgba(187, 187, 187, 0.13);
   border: none;
   position: sticky;
+  top: 0;
 }
 .text-teal {
   color: #ffffff;
@@ -201,7 +202,6 @@ export default defineComponent({
 
 .profile {
   margin-right: 5vw;
-  pointer-events: bounding-box;
 }
 .user {
   height: 3vh;

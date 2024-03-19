@@ -3,8 +3,9 @@ body {
   backdrop-filter: blur(3px);
   background-attachment:fixed;
   background-image: url("../assets/background.png");
-  background-position-y: -380px;
+  background-position-y: -400px;
   background-repeat: no-repeat;
+  margin-top: -10vh;
 }
 .secondary-btn {
   background-color: #fcb900;

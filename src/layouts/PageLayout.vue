@@ -169,8 +169,6 @@ export default defineComponent({
 .header {
   background-color: rgba(187, 187, 187, 0.13);
   border: none;
-  position: sticky;
-  top: 0;
 }
 .nav {
   display: flex;

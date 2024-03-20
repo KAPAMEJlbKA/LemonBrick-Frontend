@@ -5,7 +5,6 @@ body {
   background-image: url("../assets/background.png");
   background-position-y: -400px;
   background-repeat: no-repeat;
-  margin-top: -10vh;
 }
 .secondary-btn {
   background-color: #fcb900;

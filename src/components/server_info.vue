@@ -94,7 +94,7 @@ export default {
   height: 8vh;
   background-color: rgba(255, 255, 255, 0.74);
   border-radius: 5px;
-  padding: 0.8em;
+  padding: 10px;
   font-weight: 500;
   margin-right: 1vw;
   margin-bottom: 2vh;
@@ -111,7 +111,7 @@ export default {
   margin-top: 8px;
 }
 .head-text {
-  color: rgba(255, 252, 145, 0.67);
+  color: rgba(250, 247, 181, 0.87);
   font-weight: 600;
 }
 </style>

@@ -172,11 +172,6 @@ export default defineComponent({
   position: sticky;
   top: 0;
 }
-.text-teal {
-  color: #ffffff;
-  fill: #ffffff;
-}
-
 .nav {
   display: flex;
   margin-left: auto;

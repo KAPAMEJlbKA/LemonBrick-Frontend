@@ -1,12 +1,8 @@
 <template>
   <q-page>
-  <div style="margin: 10px;" v-if="isAdmin">
-      <q-btn @click="modalCreate.show = true">Создать</q-btn>
-  </div>
   <div class="q-pa-md row items-start q-gutter-md">
 
     <shop-item-card :item="item" :key="item.id" v-for="item in items">
-
     </shop-item-card>
   </div>
   <q-pagination v-model="currentPage" :max="maxPages"></q-pagination>

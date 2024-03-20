@@ -17,6 +17,20 @@ export default store(function (/* { ssrContext } */) {
     modules: {
       api
     },
+    state() {
+      return {
+        currentProduct: null, // текущий выбранный продукт
+        editNameDialogVisible: false // флаг видимости диалогового окна редактирования имени
+      }
+    },
+    mutations: {
+      setCurrentProduct(state, product) {
+        state.currentProduct = product
+      },
+      setEditNameDialogVisible(state, isVisible) {
+        state.editNameDialogVisible = isVisible
+      }
+    },
 
     // enable strict mode (adds overhead!)
     // for dev mode and --debug builds only

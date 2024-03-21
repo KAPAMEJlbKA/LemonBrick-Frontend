@@ -48,6 +48,7 @@ export default defineComponent({
         if (result.ok) {
           localStorage.setItem("session", JSON.stringify(result.data))
           $store.dispatch("api/setup", {})
+          console.log("Authorization successful")
           $router.push("/cabinet")
         } else if(result.data.error == "auth.require2fa") {
           require2FA.value = true;

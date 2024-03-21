@@ -97,7 +97,8 @@ export default {
   height: 8vh;
   background-color: rgba(255, 255, 255, 0.74);
   border-radius: 5px;
-  padding: 10px;
+  padding-top: 0.3vh;
+  padding-left: 0.4vw;
   font-weight: 500;
   margin-right: 1vw;
   margin-bottom: 2vh;

@@ -29,7 +29,7 @@ export default defineComponent({
 }
 
 .logo {
-  margin-top: 2vh;
+  margin-top: 6vh;
   width: 20%; /* Ширина логотипа */
   height: auto;
 }

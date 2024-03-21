@@ -100,11 +100,11 @@ export default defineComponent({
         </q-item>
         <q-item v-if="isAuth === true" clickable class="profile" no-pointer-events>
           <q-item-section class="user">
-            {{ user.username }}
+            <span class="user-name">{{ user.username }}</span>
             <q-avatar size="40px" class="user-logo">
               <head-avatar :skin="user.assets ? user.assets.skin : null"></head-avatar>
             </q-avatar>
-            <q-menu>
+            <q-menu anchor="bottom end">
               <div class="row no-wrap q-pa-md">
                 <div class="column">
                   <q-item clickable :to="'/cabinet'" class="dropmenu-item">

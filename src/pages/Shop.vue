@@ -16,11 +16,15 @@ import ShopItemCard from "src/components/ShopItemCard.vue";
 import CreateShopItemDialog from "src/components/dialogs/CreateShopItemDialog.vue";
 import { computed, defineComponent, ref, watch } from "vue";
 import { useStore, mapState } from "vuex";
+import {Remap} from "src/function";
+import {useRouter} from "vue-router";
 
 export default defineComponent({
   components: { ShopItemCard, CreateShopItemDialog },
   setup() {
     const $store = useStore();
+    const $router = useRouter();
+    Remap($store, $router)
     var modalCreate = ref(false);
     var items = ref([]);
     var maxPages = ref(1);

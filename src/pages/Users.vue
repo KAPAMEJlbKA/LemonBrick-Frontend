@@ -46,6 +46,7 @@ import { computed, defineComponent, ref, watch } from "vue";
 import { useRouter } from "vue-router";
 import { useStore, mapState } from "vuex";
 import HeadAvatar from "src/components/utils/HeadAvatar.vue";
+import {Remap} from "src/function";
 
 export default defineComponent({
   components: { Profile, HeadAvatar },
@@ -53,6 +54,7 @@ export default defineComponent({
   setup() {
     const $store = useStore();
     const $router = useRouter();
+    Remap($store, $router)
     var users = ref(null);
     var status = ref(null);
     var maxPages = ref(1);

@@ -9,12 +9,17 @@
 import Profile from "src/components/Profile.vue";
 import { computed, defineComponent } from "vue";
 import { useStore, mapState } from "vuex";
+import {useRouter} from "vue-router";
+import {Remap} from "src/function";
 
 export default defineComponent({
   components: { Profile },
   name: "PageCabinet",
   setup() {
     const $store = useStore();
+    const $router = useRouter()
+    Remap($store, $router)
+
     return {
       user: computed(() => $store.state.api.user),
     };

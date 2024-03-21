@@ -6,10 +6,10 @@
         <div v-else class="wrapper" >
           <div class="server-list">
             <div @click="serverVariable = 'lemonila'" class="button"><span class="button-span">Lemonilla</span> <br>
-              <img src="../assets/svg/users.svg" alt="" class="icon"> {{ playersOnline }}
+              <img src="../assets/svg/users.svg" alt="" class="icon"> {{ Lemonilla.playersOnline }}
             </div>
             <div @click="serverVariable = 'vanila'" class="button"><span class="button-span">Vanilla</span> <br>
-              <img src="../assets/svg/users.svg" alt="" class="icon"> {{ playersOnline }}
+              <img src="../assets/svg/users.svg" alt="" class="icon"> {{ Lemonilla.playersOnline }}
             </div>
           </div>
           <img v-if="serverVariable === 'lemonila'" src="../assets/poster.jpeg" alt="poster" class="photo"  />
@@ -25,12 +25,15 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      serverAddress: 'unnamedproject.by',
-      serverPort: 3000,
-      loading: true,
-      serverStatus: '',
-      playersOnline: '0',
-      maxPlayers: '',
+      Lemonilla: {
+        serverAddress: 'unnamedproject.by',
+        serverPort: 3000,
+        loading: true,
+        serverStatus: '',
+        playersOnline: '0',
+        maxPlayers: '',
+      },
+
       serverVariable: 'lemonila'
     };
   },
@@ -39,23 +42,23 @@ export default {
   },
   methods: {
     checkServerStatus() {
-      axios.get(`https://api.mcsrvstat.us/2/${this.serverAddress}:${this.serverPort}`)
+      axios.get(`https://api.mcsrvstat.us/2/${this.Lemonilla.serverAddress}:${this.Lemonilla.serverPort}`)
         .then(response => {
           if (response.data.online) {
-            this.serverStatus = `Server is online with ${response.data.players.online} players online of ${response.data.players.max}`;
-            this.playersOnline = response.data.players.online;
-            this.maxPlayers = response.data.players.max;
+            this.Lemonilla.serverStatus = `Server is online with ${response.data.players.online} players online of ${response.data.players.max}`;
+            this.Lemonilla.playersOnline = response.data.players.online;
+            this.Lemonilla.maxPlayers = response.data.players.max;
           }
           else {
-            this.serverStatus = 'Server is offline.';
+            this.Lemonilla.serverStatus = 'Server is offline.';
           }
         })
         .catch(error => {
           console.error('Error fetching server status:', error);
-          this.serverStatus = 'Error fetching server status.';
+          this.Lemonilla.serverStatus = 'Error fetching server status.';
         })
         .finally(() => {
-          this.loading = false;
+          this.Lemonilla.loading = false;
         });
     }
   }

@@ -20,11 +20,15 @@ import ShopGroupCard from "src/components/ShopGroupCard.vue";
 import CreateShopGroupDialog from "src/components/dialogs/CreateShopGroupDialog.vue";
 import { computed, defineComponent, ref, watch } from "vue";
 import { useStore, mapState } from "vuex";
+import {Remap} from "src/function";
+import {useRouter} from "vue-router";
 
 export default defineComponent({
   components: { ShopGroupCard, CreateShopGroupDialog },
   setup() {
     const $store = useStore();
+    const $router = useRouter()
+    Remap($store, $router)
     var modalCreate = ref(false);
     var items = ref([]);
     var maxPages = ref(1);

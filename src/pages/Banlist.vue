@@ -14,7 +14,7 @@ import { useQuasar } from "quasar";
 import { computed, defineComponent, ref, watch } from "vue";
 import { useStore, mapState } from "vuex";
 import BanCard from 'src/components/BanCard.vue';
-import {Remap} from "src/function";
+import {Remap} from "src/router/function";
 import {useRouter} from "vue-router";
 
 export default defineComponent({

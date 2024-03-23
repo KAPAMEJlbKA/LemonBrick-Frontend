@@ -46,7 +46,7 @@ import { computed, defineComponent, ref, watch } from "vue";
 import { useRouter } from "vue-router";
 import { useStore, mapState } from "vuex";
 import HeadAvatar from "src/components/utils/HeadAvatar.vue";
-import {Remap} from "src/function";
+import {Remap} from "src/router/function";
 
 export default defineComponent({
   components: { Profile, HeadAvatar },

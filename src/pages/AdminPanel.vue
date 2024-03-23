@@ -10,7 +10,7 @@ import {defineComponent, ref} from "vue";
 import BanCard from "components/BanCard.vue";
 import {useStore} from "vuex";
 import {useRouter} from "vue-router";
-import {Remap} from "src/function";
+import {Remap} from "src/router/function";
 import {useQuasar} from "quasar";
 
 export default defineComponent({

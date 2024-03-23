@@ -38,7 +38,7 @@ import ShopItemCard from "src/components/ShopItemCard.vue";
 import CreateShopItemDialog from "src/components/dialogs/CreateShopItemDialog.vue";
 import { computed, defineComponent, ref, watch } from "vue";
 import { useStore, mapState } from "vuex";
-import {Remap} from "src/function";
+import {Remap} from "src/router/function";
 import {useRouter} from "vue-router";
 
 export default defineComponent({

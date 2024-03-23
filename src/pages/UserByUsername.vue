@@ -12,7 +12,7 @@ import { computed, ref, defineComponent } from "vue";
 import { useStore, mapState } from "vuex";
 import { useRoute } from "vue-router"
 import Error404 from "src/components/utils/Error404.vue";
-import {Remap} from "src/function";
+import {Remap} from "src/router/function";
 
 export default defineComponent({
   components: { Profile, Error404 },
@@ -21,7 +21,7 @@ export default defineComponent({
     var user = ref(null);
     var err404 = ref(false);
     const $store = useStore();
-    const $route = useRoute();
+    const $router = useRoute();
     Remap($store, $router)
     async function fetchUser(username) {
       return await $store.dispatch("api/request", {
@@ -29,8 +29,8 @@ export default defineComponent({
         method: "GET",
       });
     }
-    fetchUser($route.params.username).then((r) => {
-      if (r.code == 404) {
+    fetchUser($router.params.username).then((r) => {
+      if (r.code === 404) {
         err404.value = true;
       }
       if (r.ok) {

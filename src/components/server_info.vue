@@ -33,6 +33,14 @@ export default {
         playersOnline: '0',
         maxPlayers: '',
       },
+      Hitech: {
+        serverAddress: 'unnamedproject.by',
+        serverPort: 3000,
+        loading: true,
+        serverStatus: '',
+        playersOnline: '0',
+        maxPlayers: '',
+      },
 
       serverVariable: 'lemonila'
     };

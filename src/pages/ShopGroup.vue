@@ -20,7 +20,7 @@ import ShopGroupCard from "src/components/ShopGroupCard.vue";
 import CreateShopGroupDialog from "src/components/dialogs/CreateShopGroupDialog.vue";
 import { computed, defineComponent, ref, watch } from "vue";
 import { useStore, mapState } from "vuex";
-import {Remap} from "src/function";
+import {Remap} from "src/router/function";
 import {useRouter} from "vue-router";
 
 export default defineComponent({

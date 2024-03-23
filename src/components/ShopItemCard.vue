@@ -1,5 +1,5 @@
 <template>
-  <q-card>
+  <q-card v-if="item.server === server_sort || server_sort === ''">
     <q-card-section>
       {{ item.displayName }}
     </q-card-section>
@@ -13,11 +13,13 @@
     <q-separator></q-separator>
     <q-card-actions>
       <q-input v-model.number="num" type="number"></q-input>
+      <span style="margin: 1em">{{ item.server }}</span>
       <span style="margin: 1em"> {{ sum }} {{ item.currency }} </span>
       <q-btn flat color="blue" @click="buy" :enable="num >= 1">Купить</q-btn>
       <q-btn v-if="isAdmin" flat color="primary" @click="editName">Изменить имя</q-btn>
     </q-card-actions>
   </q-card>
+
 </template>
 
 <script>
@@ -29,6 +31,9 @@ import ChangeNameShopItemDialog from "components/dialogs/ChangeNameShopItemDialo
 export default defineComponent({
   props: {
     item: {
+      required: true,
+    },
+    server_sort: {
       required: true,
     }
   },

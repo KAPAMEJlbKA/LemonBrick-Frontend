@@ -1,8 +1,27 @@
 <template>
   <q-page>
-  <div class="q-pa-md row items-start q-gutter-md">
+    <q-btn color="primary" label="Фильтр" style="margin: 1em">
+      <q-menu
+        transition-show="scale"
+        transition-hide="scale"
+      >
+        <q-list style="min-width: 100px">
+          <q-item clickable @click="filter = ''">
+            <q-item-section>Все</q-item-section>
+          </q-item>
+          <q-item clickable @click="filter = 'global'">
+            <q-item-section >Глобальные</q-item-section>
+          </q-item>
+          <q-item clickable @click="filter = 'Lemonilla'">
+            <q-item-section>Lemonilla</q-item-section>
+          </q-item>
+          <q-separator />
+        </q-list>
+      </q-menu>
+    </q-btn>
+  <div class="q-pa-md row items-start q-gutter-md" :key="filter">
 
-    <shop-item-card :item="item" :key="item.id" v-for="item in items">
+    <shop-item-card :item="item" :server_sort="filter" :key="item.id" v-for="item in items">
     </shop-item-card>
   </div>
   <q-pagination v-model="currentPage" :max="maxPages"></q-pagination>
@@ -29,12 +48,18 @@ export default defineComponent({
     var items = ref([]);
     var maxPages = ref(1);
     var currentPage = ref(1);
+    let filter = ref('')
+
     async function fetchItems(page) {
       return await $store.dispatch("api/request", {
         url: "shop/item/page/" + page,
         method: "GET",
       });
     };
+    const setFilter = (data) => {
+      filter = data
+      console.log(filter)
+    }
     fetchItems(0).then((v) => {
       if (v.ok) {
         items.value = v.data.data;
@@ -60,12 +85,17 @@ export default defineComponent({
     );
     return {
       fetchItems,
+      setFilter,
       items,
       currentPage,
       maxPages,
       modalCreate,
+      filter,
       isAdmin: computed(() => $store.getters["api/isAdmin"])
     }
   },
+  render() {
+    return h
+  }
 })
 </script>

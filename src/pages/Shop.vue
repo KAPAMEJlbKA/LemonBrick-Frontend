@@ -19,6 +19,9 @@
         </q-list>
       </q-menu>
     </q-btn>
+    <div style="margin: 10px;" v-if="isAdmin">
+      <q-btn @click="modalCreate.show = true">Создать</q-btn>
+    </div>
   <div class="q-pa-md row items-start q-gutter-md" :key="filter">
 
     <shop-item-card :item="item" :server_sort="filter" :key="item.id" v-for="item in items">

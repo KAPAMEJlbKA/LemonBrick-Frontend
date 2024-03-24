@@ -18,8 +18,7 @@
         <q-btn flat color="primary" style="margin-bottom: 10px; width: 220px" @click="UpdateName()">Загрузить</q-btn>
       </q-card-section>
       <q-card-section class="row items-center q-pb-none" style="flex-direction: column;" v-if="page === 'EditIcon'">
-        <q-file v-model="Icon" style="margin-bottom: 10px; width: 220px" label="Выберите файл для загрузки" accept=".png, image/png">
-        </q-file>
+        <UploadFile ref="Icon" style="margin-bottom: 10px; width: 220px"></UploadFile>
         <q-btn flat color="primary" style="margin-bottom: 10px; width: 220px" @click="UpdateIcon()">Загрузить</q-btn>
       </q-card-section>
       <q-card-section class="row items-center q-pb-none" style="flex-direction: column;" v-if="page === 'EditPrice'">
@@ -40,8 +39,10 @@
 import { useQuasar } from "quasar";
 import { computed, defineComponent, ref } from "vue";
 import { useStore, mapState } from "vuex";
+import UploadFile from "components/dialogs/UploadFile.vue";
 
 export default defineComponent({
+  components: {UploadFile},
   props: {
     itemId: {
       required: true
@@ -85,12 +86,13 @@ export default defineComponent({
       }
     }
     async function UpdateIcon() {
-      const fd = new FormData();
-      fd.append("file", Icon.value)
-      var response = await fetch($store.state.api.url + "cabinet/upload/skin", {
-        "method": "POST",
-        "body": fd
-      })
+      var response = await $store.dispatch("api/request", {
+        url: "/shop/item/id/" + props.itemId + "/picup",
+        method: "POST",
+        body: {
+          pictureUrl: Icon.value.name
+        },
+      });
       if (response.ok) {
         $q.notify({
           "type": "positive",

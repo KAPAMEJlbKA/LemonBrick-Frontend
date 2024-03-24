@@ -114,5 +114,4 @@ export default defineComponent({
 	width: auto;
     height: auto;
 }
-
 </style>

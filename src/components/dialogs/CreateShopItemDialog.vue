@@ -51,7 +51,7 @@ export default defineComponent({
   props: {
   },
   emits: [],
-  components: { UploadFile, UploadFile },
+  components: { UploadFile },
   setup(props, context) {
     const $store = useStore();
     const $q = useQuasar();

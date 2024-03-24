@@ -2,7 +2,7 @@
   <q-page>
 
     <div style="margin: 10px;" >
-      <q-btn v-if="isAdmin" :color="'primary'" @click="modalCreate.show = true"><img src="../assets/svg/edit.svg"></q-btn>
+      <q-btn v-if="isAdmin" :color="'primary'" @click="modalCreate.show = true"><img src="../assets/svg/create.svg"></q-btn>
 
       <q-btn color="primary" label="Фильтр" style="margin: 1em">
         <q-menu

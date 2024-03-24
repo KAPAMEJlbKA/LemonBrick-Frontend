@@ -13,22 +13,24 @@
     <q-separator></q-separator>
     <q-card-actions>
       <q-input v-model.number="num" type="number"></q-input>
+      <span style="margin: 1em">{{ item.id }}</span>
       <span style="margin: 1em">{{ item.server }}</span>
       <span style="margin: 1em"> {{ sum }} {{ item.currency }} </span>
       <q-btn flat color="blue" @click="buy" :enable="num >= 1">Купить</q-btn>
-      <q-btn v-if="isAdmin" flat color="primary" @click="editName">Изменить имя</q-btn>
+      <q-btn v-if="isAdmin" flat color="primary" @click="modalEdit.show = true" ><img src="../assets/svg/edit.svg" alt="Edit"></q-btn>
     </q-card-actions>
   </q-card>
-
+  <EditShopItemDialog ref="modalEdit" :item-id="item.id"></EditShopItemDialog>
 </template>
 
 <script>
 import {useQuasar} from "quasar";
 import {computed, defineComponent, ref, watch} from "vue";
 import {useStore, mapState} from "vuex";
-import ChangeNameShopItemDialog from "components/dialogs/ChangeNameShopItemDialog.vue";
+import EditShopItemDialog from "components/dialogs/EditShopItemDialog.vue";
 
 export default defineComponent({
+  components: {EditShopItemDialog },
   props: {
     item: {
       required: true,
@@ -41,6 +43,7 @@ export default defineComponent({
     const $store = useStore();
     const $q = useQuasar();
     var num = ref(1);
+    var modalEdit = ref(false);
     var sum = computed(() => {
       return props.item.price * num.value;
     });
@@ -84,6 +87,7 @@ export default defineComponent({
       num,
       sum,
       isAdmin,
+      modalEdit,
       editName,
       buy
     };

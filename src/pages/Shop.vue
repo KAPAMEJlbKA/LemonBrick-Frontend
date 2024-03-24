@@ -1,26 +1,28 @@
 <template>
   <q-page>
-    <q-btn color="primary" label="Фильтр" style="margin: 1em">
-      <q-menu
-        transition-show="scale"
-        transition-hide="scale"
-      >
-        <q-list style="min-width: 100px">
-          <q-item clickable @click="filter = ''">
-            <q-item-section>Все</q-item-section>
-          </q-item>
-          <q-item clickable @click="filter = 'global'">
-            <q-item-section >Глобальные</q-item-section>
-          </q-item>
-          <q-item clickable @click="filter = 'Lemonilla'">
-            <q-item-section>Lemonilla</q-item-section>
-          </q-item>
-          <q-separator />
-        </q-list>
-      </q-menu>
-    </q-btn>
-    <div style="margin: 10px;" v-if="isAdmin">
-      <q-btn @click="modalCreate.show = true">Создать</q-btn>
+
+    <div style="margin: 10px;" >
+      <q-btn v-if="isAdmin" :color="'primary'" @click="modalCreate.show = true"><img src="../assets/svg/edit.svg"></q-btn>
+
+      <q-btn color="primary" label="Фильтр" style="margin: 1em">
+        <q-menu
+          transition-show="scale"
+          transition-hide="scale"
+        >
+          <q-list style="min-width: 100px">
+            <q-item clickable @click="filter = ''">
+              <q-item-section>Все</q-item-section>
+            </q-item>
+            <q-item clickable @click="filter = 'global'">
+              <q-item-section >Глобальные</q-item-section>
+            </q-item>
+            <q-item clickable @click="filter = 'Lemonilla'">
+              <q-item-section>Lemonilla</q-item-section>
+            </q-item>
+            <q-separator />
+          </q-list>
+        </q-menu>
+      </q-btn>
     </div>
   <div class="q-pa-md row items-start q-gutter-md" :key="filter">
 
@@ -59,10 +61,6 @@ export default defineComponent({
         method: "GET",
       });
     };
-    const setFilter = (data) => {
-      filter = data
-      console.log(filter)
-    }
     fetchItems(0).then((v) => {
       if (v.ok) {
         items.value = v.data.data;
@@ -88,7 +86,6 @@ export default defineComponent({
     );
     return {
       fetchItems,
-      setFilter,
       items,
       currentPage,
       maxPages,
@@ -97,8 +94,5 @@ export default defineComponent({
       isAdmin: computed(() => $store.getters["api/isAdmin"])
     }
   },
-  render() {
-    return h
-  }
 })
 </script>

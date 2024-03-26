@@ -330,9 +330,6 @@ export default defineComponent({
       }
     );
     function getCustomValue(groupName) {
-      // здесь вы можете написать логику выбора вашего собственного значения
-      // на основе переданного значения groupName
-      // например:
       if (groupName === 'ADMIN') {
         return 'Администратор';
       } else if (groupName === 'MODERATOR') {

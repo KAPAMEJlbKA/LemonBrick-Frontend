@@ -9,7 +9,12 @@
 
       <q-item-section>
         <q-item-label>{{ user.username }}</q-item-label>
-        <q-item-label caption>UUID: {{ user.uuid }}</q-item-label>
+        <q-item-label>{{ user.status ? user.status : $t("cabinet.label.status.none") }}
+          <q-btn v-if="owner == true" flat round icon="edit" size="xs"
+                 @click="modalChangeStatus.show = true"></q-btn>
+          <q-btn v-if="isAdmin == true && owner == false" flat round icon="delete" size="xs" color="red"
+                 @click="deleteUserStatus(user)"></q-btn>
+        </q-item-label>
       </q-item-section>
     </q-item>
     <q-separator></q-separator>
@@ -37,23 +42,10 @@
         <q-list>
           <q-item>
             <q-item-section>
-              <q-item-label>{{ $t("cabinet.label.status") }}
-                <q-btn v-if="owner == true" flat round icon="edit" size="xs"
-                  @click="modalChangeStatus.show = true"></q-btn>
-                <q-btn v-if="isAdmin == true && owner == false" flat round icon="delete" size="xs" color="red"
-                  @click="deleteUserStatus(user)"></q-btn>
-              </q-item-label>
-              <q-item-label caption>{{
-                user.status ? user.status : $t("cabinet.label.status.none")
-              }}</q-item-label>
-            </q-item-section>
-          </q-item>
-          <q-item>
-            <q-item-section>
               <q-item-label>{{ $t("cabinet.label.groups") }} <q-btn v-if="isAdmin == true" flat round icon="add" size="xs"
                   @click="modalAddGroup.show = true"></q-btn></q-item-label>
               <q-item-label v-if="!user.groups || user.groups.length == 0" caption>
-                {{ $t("cabinet.label.groups.none") }}</q-item-label>
+                {{ getCustomValue($t("cabinet.label.groups.none")) }}</q-item-label>
             </q-item-section>
           </q-item>
           <q-item-section>
@@ -61,7 +53,7 @@
               <q-item v-for="group in user.groups" v-bind:key="group.name">
                 <q-item-section>
                   <q-item-label>
-                    {{ group.groupName }}
+                    {{ getCustomValue(group.groupName) }}
                   </q-item-label>
                 </q-item-section>
                 <q-item-section side>
@@ -199,6 +191,8 @@ export default defineComponent({
     const modalExchangeMoney = ref(false);
     const modalTransactions = ref(false);
     var modalTransactionsBalance = ref(null);
+    const user = ref();
+
     async function updateInfo(user) {
       if (!user) {
         return;
@@ -335,6 +329,22 @@ export default defineComponent({
         updateInfo(value);
       }
     );
+    function getCustomValue(groupName) {
+      // здесь вы можете написать логику выбора вашего собственного значения
+      // на основе переданного значения groupName
+      // например:
+      if (groupName === 'ADMIN') {
+        return 'Администратор';
+      } else if (groupName === 'MODERATOR') {
+        return 'Модератор';
+      }
+      else if (groupName === 'HELPER') {
+        return 'Помогатор';
+      }
+      else {
+        return 'Обычный игрок';
+      }
+    }
     return {
       owner: ref(props.owner),
       balances,
@@ -359,6 +369,7 @@ export default defineComponent({
       updateAsset,
       unban,
       securityInfo,
+      getCustomValue,
     };
   },
 });

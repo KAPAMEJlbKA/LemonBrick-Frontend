@@ -12,7 +12,7 @@ import { computed, ref, defineComponent } from "vue";
 import { useStore, mapState } from "vuex";
 import { useRoute } from "vue-router"
 import Error404 from "src/components/utils/Error404.vue";
-import {Remap} from "src/router/function";
+import {CheckAdmin, Remap} from "src/router/function";
 
 export default defineComponent({
   components: { Profile, Error404 },
@@ -20,9 +20,11 @@ export default defineComponent({
   setup() {
     var user = ref(null);
     var err404 = ref(false);
+    const isAdmin = computed(() => $store.getters["api/isAdmin"])
     const $store = useStore();
     const $router = useRoute();
     Remap($store, $router)
+    CheckAdmin(isAdmin, $router)
     async function fetchUser(username) {
       return await $store.dispatch("api/request", {
         url: "users/name/" + username + "?assets=true",

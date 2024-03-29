@@ -16,14 +16,14 @@ const routes = [
   },
   {
     path: '/users',
-    component: () => import('layouts/PageLayout.vue'),
+    component: () => import('layouts/AdminLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Users.vue') }
     ]
   },
   {
     path: '/user/name/:username',
-    component: () => import('layouts/PageLayout.vue'),
+    component: () => import('layouts/AdminLayout.vue'),
     children: [
       { path: '', component: () => import('pages/UserByUsername.vue') }
     ],
@@ -31,7 +31,7 @@ const routes = [
   },
   {
     path: '/user/uuid/:uuid',
-    component: () => import('layouts/PageLayout.vue'),
+    component: () => import('layouts/AdminLayout.vue'),
     children: [
       { path: '', component: () => import('pages/UserByUUID.vue') }
     ],
@@ -67,7 +67,7 @@ const routes = [
   },
   {
     path: '/banlist',
-    component: () => import('layouts/PageLayout.vue'),
+    component: () => import('layouts/AdminLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Banlist.vue') }
     ]
@@ -84,6 +84,13 @@ const routes = [
     component: () => import('layouts/PageLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Rules.vue') }
+    ]
+  },
+  {
+    path: '/admin',
+    component: () => import('layouts/AdminLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/AdminPanel.vue') }
     ]
   },
   // Always leave this as last one,

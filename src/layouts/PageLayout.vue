@@ -44,7 +44,8 @@ export default defineComponent({
             "message": "Ошибка при выходе: SC" + error.code + ": " + error.error
           })
         }
-      }
+      },
+      isAdmin: computed(() => $store.getters["api/isAdmin"]),
     }
   }
 })
@@ -113,7 +114,7 @@ export default defineComponent({
                   <q-item clickable :to="'/shop/items'" class="dropmenu-item">
                     <q-item-section>Магазин</q-item-section>
                   </q-item>
-                  <q-item v-if="isAuth === true" clickable :to="'/shop/items'" class="dropmenu-item">
+                  <q-item v-if="isAdmin === true" clickable :to="'/admin'" class="dropmenu-item">
                     <q-item-section>Панель</q-item-section>
                   </q-item>
                 </div>

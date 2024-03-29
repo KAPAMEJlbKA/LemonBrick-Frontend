@@ -12,7 +12,8 @@ import { computed, ref, defineComponent } from "vue";
 import { useStore, mapState } from "vuex";
 import { useRoute } from "vue-router"
 import Error404 from "src/components/utils/Error404.vue";
-import {Remap} from "src/router/function";
+import {CheckAdmin, Remap} from "src/router/function";
+import {isAdmin} from "src/store/module-api/getters";
 
 export default defineComponent({
   components: { Profile, Error404 },
@@ -21,15 +22,17 @@ export default defineComponent({
     var user = ref(null);
     var err404 = ref(false);
     const $store = useStore();
-    const $route = useRoute();
-    Remap($store, $route)
+    const $router = useRoute();
+    const isAdmin = computed(() => $store.getters["api/isAdmin"])
+    Remap($store, $router)
+    CheckAdmin(isAdmin, $router)
     async function fetchUser(uuid) {
       return await $store.dispatch("api/request", {
         url: "users/uuid/" + uuid + "?assets=true",
         method: "GET",
       });
     }
-    fetchUser($route.params.uuid).then((r) => {
+    fetchUser($router.params.uuid).then((r) => {
       if (r.code === 404) {
         err404.value = true;
       }

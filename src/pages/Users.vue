@@ -46,7 +46,7 @@ import { computed, defineComponent, ref, watch } from "vue";
 import { useRouter } from "vue-router";
 import { useStore, mapState } from "vuex";
 import HeadAvatar from "src/components/utils/HeadAvatar.vue";
-import {Remap} from "src/router/function";
+import {CheckAdmin, Remap} from "src/router/function";
 
 export default defineComponent({
   components: { Profile, HeadAvatar },
@@ -54,7 +54,9 @@ export default defineComponent({
   setup() {
     const $store = useStore();
     const $router = useRouter();
+    const isAdmin = computed(() => $store.getters["api/isAdmin"])
     Remap($store, $router)
+    CheckAdmin(isAdmin, $router)
     var users = ref(null);
     var status = ref(null);
     var maxPages = ref(1);

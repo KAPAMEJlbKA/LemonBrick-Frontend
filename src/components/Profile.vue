@@ -330,7 +330,21 @@ export default defineComponent({
       }
     );
     function getCustomValue(groupName) {
-      if (groupName === 'ADMIN') {
+      switch (groupName) {
+        case 'ADMIN':
+          return 'Администратор'
+          break
+        case 'MODERATOR':
+          return 'Модератор'
+          break
+        case 'HELPER':
+          return 'Хелпер'
+          break;
+        default:
+          return 'Обычный игрок'
+          break
+      }
+      /*if (groupName === 'ADMIN') {
         return 'Администратор';
       } else if (groupName === 'MODERATOR') {
         return 'Модератор';
@@ -340,7 +354,7 @@ export default defineComponent({
       }
       else {
         return 'Обычный игрок';
-      }
+      }*/
     }
     return {
       owner: ref(props.owner),

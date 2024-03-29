@@ -113,6 +113,9 @@ export default defineComponent({
                   <q-item clickable :to="'/shop/items'" class="dropmenu-item">
                     <q-item-section>Магазин</q-item-section>
                   </q-item>
+                  <q-item v-if="isAuth === true" clickable :to="'/shop/items'" class="dropmenu-item">
+                    <q-item-section>Панель</q-item-section>
+                  </q-item>
                 </div>
 
                 <q-separator vertical inset class="q-mx-lg" />

@@ -18,7 +18,7 @@
         <q-btn flat color="primary" style="margin-bottom: 10px; width: 220px" @click="UpdateName()">Загрузить</q-btn>
       </q-card-section>
       <q-card-section class="row items-center q-pb-none" style="flex-direction: column;" v-if="page === 'EditIcon'">
-        <UploadFile ref="Icon" style="margin-bottom: 10px; width: 220px"></UploadFile>
+        <UploadFileStore ref="Icon" :item-id="itemId" style="margin-bottom: 10px; width: 220px"></UploadFileStore>
         <q-btn flat color="primary" style="margin-bottom: 10px; width: 220px" @click="UpdateIcon()">Загрузить</q-btn>
       </q-card-section>
       <q-card-section class="row items-center q-pb-none" style="flex-direction: column;" v-if="page === 'EditPrice'">
@@ -40,9 +40,10 @@ import { useQuasar } from "quasar";
 import { computed, defineComponent, ref } from "vue";
 import { useStore, mapState } from "vuex";
 import UploadFile from "components/dialogs/UploadFile.vue";
+import UploadFileStore from "components/dialogs/UploadFileStore.vue";
 
 export default defineComponent({
-  components: {UploadFile},
+  components: {UploadFileStore},
   props: {
     itemId: {
       required: true
@@ -93,6 +94,8 @@ export default defineComponent({
           pictureUrl: Icon.value.name
         },
       });
+      console.log(response)
+      console.log(Icon.value.name)
       if (response.ok) {
         $q.notify({
           "type": "positive",

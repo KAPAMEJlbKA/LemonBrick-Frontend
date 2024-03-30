@@ -12,14 +12,10 @@ export default defineComponent({
     const $store = useStore();
     const $router = useRouter();
     const isAdmin = computed(() => $store.getters["api/isAdmin"])
-    const debug = () => {
-      console.log(isAdmin.value)
-    }
     Remap($store, $router)
     CheckAdmin(isAdmin.value, $router)
     return {
       isAdmin,
-      debug,
       user: computed(() => $store.state.api.user)
     }
   },
@@ -28,12 +24,10 @@ export default defineComponent({
 
 <template>
   <q-page class="flex flex-center">
+
     <profile :user="user" :owner="true">
 
     </profile>
   </q-page>
 </template>
 
-<style scoped>
-
-</style>

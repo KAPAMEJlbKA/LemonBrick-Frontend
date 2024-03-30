@@ -23,7 +23,7 @@ export default defineComponent({
     async function upload() {
       const fd = new FormData();
       fd.append("file", file.value);
-      var response = await fetch($store.state.api.url + "shop/item/id/" + props.itemId + "/picup", {
+      var response = await fetch($store.state.api.url + "admin/upload/simpleupload", {
           "method": "POST",
           "body": fd
       })

@@ -28,7 +28,6 @@ export default defineComponent({
 
 <template>
   <q-page class="flex flex-center">
-    <button @click="debug">ff</button>
     <profile :user="user" :owner="true">
 
     </profile>

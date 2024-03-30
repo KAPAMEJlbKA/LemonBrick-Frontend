@@ -333,28 +333,21 @@ export default defineComponent({
       switch (groupName) {
         case 'ADMIN':
           return 'Администратор'
-          break
+        case 'BUILDER':
+          return 'Архитектор'
         case 'MODERATOR':
           return 'Модератор'
-          break
         case 'HELPER':
           return 'Хелпер'
-          break;
+        case 'HD':
+          return 'Улучшенный скин'
+        case 'PLAYER':
+          return 'Обычный игрок'
+        case 'Tester':
+          return 'Тестер'
         default:
           return 'Обычный игрок'
-          break
       }
-      /*if (groupName === 'ADMIN') {
-        return 'Администратор';
-      } else if (groupName === 'MODERATOR') {
-        return 'Модератор';
-      }
-      else if (groupName === 'HELPER') {
-        return 'Помогатор';
-      }
-      else {
-        return 'Обычный игрок';
-      }*/
     }
     return {
       owner: ref(props.owner),

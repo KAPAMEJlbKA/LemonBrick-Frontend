@@ -62,6 +62,7 @@ export default defineComponent({
     const time = ref(null)
     const data = ref(null)
     const count = ref(0)
+
     async function UpdateName() {
       var result = await $store.dispatch("api/request", {
         url: "/shop/item/id/" + props.itemId + "/update",
@@ -87,8 +88,6 @@ export default defineComponent({
       }
     }
     async function fd() {
-      console.log('DDD')
-      console.log(Icon)
       const fd = new FormData();
       fd.append("file", Icon.value);
       console.log(fd)
@@ -103,20 +102,19 @@ export default defineComponent({
       }
     })
     async function UpdateIcon() {
-      console.log(Icon)
-      console.log(Icon.value)
-      console.log(Icon.value.name)
       const response = await $store.dispatch("api/request", {
         url: "/shop/item/id/" + props.itemId + "/picup",
         method: "POST",
         body: {
-          pictureUrl: Icon.value.name
-        },
+          pictureName: Icon.value.name
+        }
       });
-      if (response.ok) {
+      console.log(Icon.value.name)
+      console.log(response)
+     if (response.ok) {
         $q.notify({
-          "type": "positive",
-          "message": "Скин успешно загружен"
+          "type": "negative",
+          "message": "ываываыва"
         })
         show = false
       } else {
@@ -126,6 +124,7 @@ export default defineComponent({
           "message": "Ошибка при загрузке скина: SC" + error.code + ": " + error.error
         })
       }
+
     }
     async function UpdatePrice() {
       var result = await $store.dispatch("api/request", {

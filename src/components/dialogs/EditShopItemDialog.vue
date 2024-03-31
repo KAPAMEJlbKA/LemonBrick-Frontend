@@ -18,7 +18,9 @@
         <q-btn flat color="primary" style="margin-bottom: 10px; width: 220px" @click="UpdateName()">Загрузить</q-btn>
       </q-card-section>
       <q-card-section class="row items-center q-pb-none" style="flex-direction: column;" v-if="page === 'EditIcon'">
-        <UploadFileStore ref="Icon" style="margin-bottom: 10px; width: 220px"></UploadFileStore>
+        <q-file v-model="Icon" label="Выберите файл для загрузки" accept=".png, image/png">
+
+        </q-file>
         <q-btn flat color="primary" style="margin-bottom: 10px; width: 220px" @click="UpdateIcon()">Загрузить</q-btn>
       </q-card-section>
       <q-card-section class="row items-center q-pb-none" style="flex-direction: column;" v-if="page === 'EditPrice'">
@@ -90,6 +92,15 @@ export default defineComponent({
       console.log(Icon)
       console.log(Icon.value)
       console.log(Icon.value.name)
+      console.log('DDD')
+      console.log(Icon)
+      const fd = new FormData();
+      fd.append("file", Icon.value);
+      console.log(fd)
+      var response1 = await fetch($store.state.api.url + "admin/upload/simpleupload", {
+        "method": "POST",
+        "body": fd
+      })
       const response = await $store.dispatch("api/request", {
         url: "/shop/item/id/" + props.itemId + "/picup",
         method: "POST",

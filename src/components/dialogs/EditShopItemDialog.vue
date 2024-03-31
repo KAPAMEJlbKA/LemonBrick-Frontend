@@ -89,9 +89,7 @@ export default defineComponent({
       }
     }
     async function UpdateIcon() {
-      console.log(Icon)
-      console.log(Icon.value)
-      console.log(Icon.value.name)
+
       console.log('DDD')
       console.log(Icon)
       const fd = new FormData();
@@ -101,6 +99,9 @@ export default defineComponent({
         "method": "POST",
         "body": fd
       })
+      console.log(Icon)
+      console.log(Icon.value)
+      console.log(Icon.value.name)
       const response = await $store.dispatch("api/request", {
         url: "/shop/item/id/" + props.itemId + "/picup",
         method: "POST",

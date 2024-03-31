@@ -18,7 +18,7 @@
         <q-btn flat color="primary" style="margin-bottom: 10px; width: 220px" @click="UpdateName()">Загрузить</q-btn>
       </q-card-section>
       <q-card-section class="row items-center q-pb-none" style="flex-direction: column;" v-if="page === 'EditIcon'">
-        <UploadFileStore ref="Icon" :item-id="itemId" style="margin-bottom: 10px; width: 220px"></UploadFileStore>
+        <UploadFileStore ref="Icon" style="margin-bottom: 10px; width: 220px"></UploadFileStore>
         <q-btn flat color="primary" style="margin-bottom: 10px; width: 220px" @click="UpdateIcon()">Загрузить</q-btn>
       </q-card-section>
       <q-card-section class="row items-center q-pb-none" style="flex-direction: column;" v-if="page === 'EditPrice'">
@@ -63,6 +63,9 @@ export default defineComponent({
     const data = ref(null)
     const count = ref(0)
     async function UpdateName() {
+      console.log(Icon)
+      console.log(Icon.value)
+      console.log(Icon.value.name)
       var result = await $store.dispatch("api/request", {
         url: "/shop/item/id/" + props.itemId + "/update",
         method: "POST",
@@ -87,15 +90,14 @@ export default defineComponent({
       }
     }
     async function UpdateIcon() {
-      var response = await $store.dispatch("api/request", {
+      console.log(Icon.value)
+      const response = await $store.dispatch("api/request", {
         url: "/shop/item/id/" + props.itemId + "/picup",
         method: "POST",
         body: {
           pictureUrl: Icon.value.name
         },
       });
-      console.log(response)
-      console.log(Icon.value.name)
       if (response.ok) {
         $q.notify({
           "type": "positive",
@@ -118,7 +120,7 @@ export default defineComponent({
           price: price.value
         },
       });
-      if (result.ok) {
+      /*if (result.ok) {
         $q.notify({
           "type": "positive",
           "message": "Товар создан"
@@ -130,7 +132,7 @@ export default defineComponent({
           "type": "negative",
           "message": "Ошибка при изминении товара: SC" + error.code + ": " + error.error
         })
-      }
+      }*/
     }
     async function UpdateLimits() {
       console.log('debug')

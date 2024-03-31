@@ -63,9 +63,6 @@ export default defineComponent({
     const data = ref(null)
     const count = ref(0)
     async function UpdateName() {
-      console.log(Icon)
-      console.log(Icon.value)
-      console.log(Icon.value.name)
       var result = await $store.dispatch("api/request", {
         url: "/shop/item/id/" + props.itemId + "/update",
         method: "POST",
@@ -90,7 +87,9 @@ export default defineComponent({
       }
     }
     async function UpdateIcon() {
+      console.log(Icon)
       console.log(Icon.value)
+      console.log(Icon.value.name)
       const response = await $store.dispatch("api/request", {
         url: "/shop/item/id/" + props.itemId + "/picup",
         method: "POST",

@@ -18,8 +18,10 @@ export default defineComponent({
     var name = ref(null);
     var file = ref(null);
     async function upload() {
+      console.log(file)
       const fd = new FormData();
       fd.append("file", file.value);
+      console.log(fd)
       var response = await fetch($store.state.api.url + "admin/upload/simpleupload", {
           "method": "POST",
           "body": fd

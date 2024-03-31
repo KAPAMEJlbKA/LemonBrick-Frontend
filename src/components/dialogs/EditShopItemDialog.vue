@@ -18,9 +18,7 @@
         <q-btn flat color="primary" style="margin-bottom: 10px; width: 220px" @click="UpdateName()">Загрузить</q-btn>
       </q-card-section>
       <q-card-section class="row items-center q-pb-none" style="flex-direction: column;" v-if="page === 'EditIcon'">
-        <q-file v-model="Icon" label="Выберите файл для загрузки" accept=".png, image/png">
-
-        </q-file>
+        <UploadFile ref="Icon"></UploadFile>
         <q-btn flat color="primary" style="margin-bottom: 10px; width: 220px" @click="UpdateIcon()">Загрузить</q-btn>
       </q-card-section>
       <q-card-section class="row items-center q-pb-none" style="flex-direction: column;" v-if="page === 'EditPrice'">
@@ -39,13 +37,13 @@
 </template>
 <script>
 import { useQuasar } from "quasar";
-import { computed, defineComponent, ref } from "vue";
+import {computed, defineComponent, ref, watch} from "vue";
 import { useStore, mapState } from "vuex";
 import UploadFile from "components/dialogs/UploadFile.vue";
 import UploadFileStore from "components/dialogs/UploadFileStore.vue";
 
 export default defineComponent({
-  components: {UploadFileStore},
+  components: {UploadFile, UploadFileStore},
   props: {
     itemId: {
       required: true
@@ -88,8 +86,7 @@ export default defineComponent({
         })
       }
     }
-    async function UpdateIcon() {
-
+    async function fd() {
       console.log('DDD')
       console.log(Icon)
       const fd = new FormData();
@@ -99,6 +96,13 @@ export default defineComponent({
         "method": "POST",
         "body": fd
       })
+    }
+    watch(() => Icon.value, (value, oldValue) => {
+      if(value) {
+        fd();
+      }
+    })
+    async function UpdateIcon() {
       console.log(Icon)
       console.log(Icon.value)
       console.log(Icon.value.name)

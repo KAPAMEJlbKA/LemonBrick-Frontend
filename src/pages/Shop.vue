@@ -2,7 +2,7 @@
   <q-page>
 
     <div style="margin: 10px;" >
-      <q-btn v-if="isAdmin" :color="'primary'" @click="modalCreate.show = true"><img src="../assets/svg/create.svg"></q-btn>
+      <q-btn v-if="isAdmin" :color="'primary'" style="height: 40px; width: 40px;" @click="modalCreate.show = true"><img src="../assets/svg/create.svg"></q-btn>
 
       <q-btn color="primary" label="Фильтр" style="margin: 1em">
         <q-menu
@@ -23,6 +23,8 @@
           </q-list>
         </q-menu>
       </q-btn>
+      <q-btn :color="'primary'" style="width: 300px; margin-left: 32vw" :to="'/shop/groups'">Магазин привилегий</q-btn>
+
     </div>
   <div class="q-pa-md row items-start q-gutter-md" :key="filter">
 

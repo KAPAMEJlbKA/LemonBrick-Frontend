@@ -1,11 +1,33 @@
 <template>
   <q-page>
-  <div style="margin: 10px;" v-if="isAdmin">
-      <q-btn @click="modalCreate.show = true">Создать</q-btn>
-  </div>
+    <div style="margin: 10px;" >
+      <q-btn v-if="isAdmin" :color="'primary'" style="height: 40px; width: 40px;" @click="modalCreate.show = true"><img src="../assets/svg/create.svg"></q-btn>
+
+      <q-btn color="primary" label="Фильтр" style="margin: 1em">
+        <q-menu
+          transition-show="scale"
+          transition-hide="scale"
+        >
+          <q-list style="min-width: 100px">
+            <q-item clickable @click="filter = ''">
+              <q-item-section>Все</q-item-section>
+            </q-item>
+            <q-item clickable @click="filter = 'global'">
+              <q-item-section >Глобальные</q-item-section>
+            </q-item>
+            <q-item clickable @click="filter = 'Lemonilla'">
+              <q-item-section>Lemonilla</q-item-section>
+            </q-item>
+            <q-separator />
+          </q-list>
+        </q-menu>
+      </q-btn>
+      <q-btn :color="'primary'" style="width: 300px; margin-left: 32vw" :to="'/shop/items'">Магазин предметов</q-btn>
+
+    </div>
   <div class="q-pa-md row items-start q-gutter-md">
 
-    <shop-group-card :item="item" :key="item.id" v-for="item in items">
+    <shop-group-card :item="item" :key="item.id" :server_sort="filter" v-for="item in items">
 
     </shop-group-card>
   </div>
@@ -33,6 +55,7 @@ export default defineComponent({
     var items = ref([]);
     var maxPages = ref(1);
     var currentPage = ref(1);
+    let filter = ref('')
     async function fetchItems(page) {
       return await $store.dispatch("api/request", {
         url: "shop/group/page/" + page,
@@ -68,7 +91,8 @@ export default defineComponent({
       currentPage,
       maxPages,
       modalCreate,
-      isAdmin: computed(() => $store.getters["api/isAdmin"])
+      isAdmin: computed(() => $store.getters["api/isAdmin"]),
+      filter
     }
   },
 })

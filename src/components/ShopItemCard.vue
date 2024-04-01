@@ -5,13 +5,13 @@
     </q-card-section>
     <q-separator></q-separator>
     <q-card-section>
-      <div class="flex flex-center" v-if="item.pictureUrl">
+      <div class="flex flex-center">
         <img :src="item.pictureUrl" height="128" width="128">
       </div>
     </q-card-section>
     <q-card-section style="height: 80px">{{ item.description }}</q-card-section>
     <q-separator></q-separator>
-    <q-card-actions style="margin-top: auto">
+    <q-card-actions>
       <q-input v-model.number="num" type="number" style="width: 50px"></q-input>
       <span style="margin: 1em">{{ item.server }}</span>
       <span style="margin: 1em"> {{ sum }} {{ item.currency }} </span>

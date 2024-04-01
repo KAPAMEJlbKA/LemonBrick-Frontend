@@ -1,30 +1,38 @@
 <template>
-  <q-card>
+  <q-card v-if="item.server === server_sort || server_sort === ''" style="width: 360px; height: 380px">
     <q-card-section>
       {{ item.displayName }}
     </q-card-section>
     <q-separator></q-separator>
     <q-card-section>
-      <div class="flex flex-center" v-if="item.pictureUrl">
+      <div class="flex flex-center">
         <img :src="item.pictureUrl" style="max-height: 512px; max-width: 256px;">
       </div>
     </q-card-section>
-    <q-card-section>{{ item.description }}</q-card-section>
+    <q-card-section style="height: 80px">{{ item.description }}</q-card-section>
     <q-separator></q-separator>
     <q-card-actions>
-      <q-input v-model.number="num" type="number"></q-input>
+      <q-input v-model.number="num" type="number" style="width: 50px"></q-input>
+      <span style="margin: 1em">{{ item.server }}</span>
       <span style="margin: 1em"> {{ sum }} {{ item.currency }} </span>
       <q-btn flat color="blue" @click="buy" :enable="num >= 1">Купить</q-btn>
+      <q-btn v-if="isAdmin" flat color="primary" @click="modalEdit.show = true" ><img src="../assets/svg/edit.svg" alt="Edit"></q-btn>
     </q-card-actions>
   </q-card>
+  <edit-shop-groups-dialog ref="modalEdit" :item-id="item.id"></edit-shop-groups-dialog>
 </template>
 <script>
 import { useQuasar } from "quasar";
 import { computed, defineComponent, ref, watch } from "vue";
 import { useStore, mapState } from "vuex";
+import EditShopGroupsDialog from "components/dialogs/EditShopGroupsDialog.vue";
 export default defineComponent({
+  components: {EditShopGroupsDialog},
   props: {
     item: {
+      required: true,
+    },
+    server_sort: {
       required: true,
     }
   },
@@ -32,9 +40,13 @@ export default defineComponent({
     const $store = useStore();
     const $q = useQuasar();
     var num = ref(1);
+    var modalEdit = ref(false);
     var sum = computed(() => {
       return props.item.price * num.value;
     })
+    const isAdmin = computed(() => {
+      return $store.getters["api/isAdmin"];
+    });
     return {
       async buy() {
         var result = await $store.dispatch("api/request", {
@@ -58,7 +70,7 @@ export default defineComponent({
           })
         }
       },
-      num, sum
+      num, sum, modalEdit, isAdmin
     }
   }
 })

@@ -115,6 +115,7 @@ export default defineComponent({
           "type": "positive",
           "message": "Иконка изменена"
         })
+        location.reload(true)
         show = false
       } else {
         var error = await response.json()

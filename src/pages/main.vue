@@ -3,7 +3,7 @@
     <div class="container">
       <img src="../assets/icon.png" alt="LemonBrick" class="logo floating-element" @mouseover="animateLogo" @mouseout="resetLogo" />
       <h1 class="logo-text floating-element">LemonBrick</h1>
-      <q-btn unelevated rounded class="main-btn" label="Начать играть" />
+      <a href="https://lemonbrick.by/skins/LemonBrick.exe" class="main-btn">Начать играть</a>
       <server_info></server_info>
     </div>
   </q-page>
@@ -43,6 +43,10 @@ export default defineComponent({
 .main-btn {
   background-color: #fcb900;
   color: #ffffff;
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
   font-weight: 600;
   font-size: 1.2em;
   width: 13vw;
@@ -57,6 +61,9 @@ export default defineComponent({
   transition: all 4s ease;
   border-radius: 80px;
   animation: btn 2s ease-in-out;
+}
+.main-btn-text {
+  color: #f0f0f0;
 }
 .reg-btn {
   margin-top: 30px;

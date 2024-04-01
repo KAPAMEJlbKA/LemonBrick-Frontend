@@ -59,7 +59,7 @@ export default defineComponent({
             "type": "positive",
             "message": "Регистрация прошла успешно"
           })
-          $router.push("/")
+          $router.push("/auth")
         } else {
           var error = result.data;
           $q.notify({

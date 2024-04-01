@@ -18,16 +18,17 @@
         <q-input v-model="itemNbt" type="textarea" label="NBT предмета в minecraft"></q-input>
         <q-input v-model="itemCustom" label="Custom предмета в minecraft (зарезервировано)"></q-input>
         <q-input v-model="itemQuantity" label="Число предметов при покупке 1шт" type="number"></q-input>
-        <q-btn color="primary" v-model="server" label="Выбрать сервер" style="margin: 1em">
+        <q-item-label style="font-size: 1.1em; padding-top: 1rem; padding-bottom: 1rem">{{server}}</q-item-label>
+        <q-btn color="primary" v-model="server" label="Выбрать сервер">
           <q-menu
             transition-show="scale"
             transition-hide="scale"
           >
             <q-list style="min-width: 100px">
-              <q-item clickable @click="server = 'global'">
+              <q-item clickable v-close-popup @click="server = 'global'">
                 <q-item-section >Глобальные</q-item-section>
               </q-item>
-              <q-item clickable @click="server = 'Lemonilla'">
+              <q-item clickable v-close-popup @click="server = 'Lemonilla'">
                 <q-item-section>Lemonilla</q-item-section>
               </q-item>
               <q-separator />

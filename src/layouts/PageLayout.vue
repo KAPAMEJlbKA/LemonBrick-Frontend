@@ -99,10 +99,9 @@ export default defineComponent({
             <q-item-label>Кабинет</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item v-if="isAuth === true" clickable class="profile" no-pointer-events>
-          <q-item-section class="user">
-            <span class="user-name">{{ user.username }}</span>
-            <q-avatar size="40px" class="user-logo">
+        <q-chip v-if="isAuth === true" clickable class="profile" no-pointer-events>
+            {{user.username}}
+            <q-avatar size="35px" style="margin-left: 10px" class="user-logo">
               <head-avatar :skin="user.assets ? user.assets.skin : null"></head-avatar>
             </q-avatar>
             <q-menu anchor="bottom end">
@@ -139,8 +138,6 @@ export default defineComponent({
                 </div>
               </div>
             </q-menu>
-
-
               <!--q-menu auto-close class="dropmenu">
                 <q-list dense class="dropmenu-list">
                   <q-item clickable :to="'/cabinet'" class="dropmenu-item">
@@ -151,8 +148,7 @@ export default defineComponent({
                   </q-item>
                 </q-list>
               </q-menu-->
-          </q-item-section>
-        </q-item>
+        </q-chip>
         <!--q-btn v-if="isAuth === true" flat icon="logout" @click="logout"></q-btn-->
       </q-toolbar>
     </q-header>
@@ -199,6 +195,10 @@ export default defineComponent({
 
 .profile {
   margin-right: 5vw;
+  background: none;
+  width: 100px;
+  height: 50px;
+  color: #ffffff;
 }
 .user {
   height: 3vh;

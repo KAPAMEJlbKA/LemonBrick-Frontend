@@ -8,7 +8,7 @@
       </q-card-section>
       <q-card-section class="row items-center q-pb-none" style="flex-direction: column;" v-if="page === ''">
         <q-btn color="white" style="margin-bottom: 10px; width: 220px" text-color="black" label="Изминение названия" @click="page = 'EditName'"/>
-        <q-btn color="red" style="margin-bottom: 10px; width: 220px" text-color="black" label="Изминение иконку" @click="page = 'EditIcon'"/>
+        <q-btn color="white" style="margin-bottom: 10px; width: 220px" text-color="black" label="Изминение иконку" @click="page = 'EditIcon'"/>
         <q-btn color="white" style="margin-bottom: 10px; width: 220px" text-color="black" label="Изминение цены" @click="page = 'EditPrice'"/>
         <q-btn color="red" style="margin-bottom: 10px; width: 220px" text-color="black" label="Изминение лимитов" @click="page = 'EditLimit'"/>
       </q-card-section>
@@ -18,7 +18,7 @@
         <q-btn flat color="primary" style="margin-bottom: 10px; width: 220px" @click="UpdateName()">Загрузить</q-btn>
       </q-card-section>
       <q-card-section class="row items-center q-pb-none" style="flex-direction: column;" v-if="page === 'EditIcon'">
-        <UploadFile ref="Icon"></UploadFile>
+        <UploadFile ref="Icon" style="margin-bottom: 10px; width: 220px"></UploadFile>
         <q-btn flat color="primary" style="margin-bottom: 10px; width: 220px" @click="UpdateIcon()">Загрузить</q-btn>
       </q-card-section>
       <q-card-section class="row items-center q-pb-none" style="flex-direction: column;" v-if="page === 'EditPrice'">
@@ -76,7 +76,7 @@ export default defineComponent({
       if (result.ok) {
         $q.notify({
           "type": "positive",
-          "message": "Товар создан"
+          "message": "Имя и описание изменены"
         })
         show = false
       } else {
@@ -90,7 +90,6 @@ export default defineComponent({
     async function fd() {
       const fd = new FormData();
       fd.append("file", Icon.value);
-      console.log(fd)
       var response1 = await fetch($store.state.api.url + "admin/upload/simpleupload", {
         "method": "POST",
         "body": fd
@@ -113,15 +112,15 @@ export default defineComponent({
       console.log(response)
      if (response.ok) {
         $q.notify({
-          "type": "negative",
-          "message": "ываываыва"
+          "type": "positive",
+          "message": "Иконка изменена"
         })
         show = false
       } else {
         var error = await response.json()
         $q.notify({
           "type": "negative",
-          "message": "Ошибка при загрузке скина: SC" + error.code + ": " + error.error
+          "message": "Ошибка при загрузке иконки: SC" + error.code + ": " + error.error
         })
       }
 
@@ -134,19 +133,19 @@ export default defineComponent({
           price: price.value
         },
       });
-      /*if (result.ok) {
+      if (result.ok) {
         $q.notify({
           "type": "positive",
-          "message": "Товар создан"
+          "message": "Цена обновлена"
         })
         show = false
       } else {
         var error = result.data
         $q.notify({
           "type": "negative",
-          "message": "Ошибка при изминении товара: SC" + error.code + ": " + error.error
+          "message": "Ошибка при изминении цены: SC" + error.code + ": " + error.error
         })
-      }*/
+      }
     }
     async function UpdateLimits() {
       console.log('debug')

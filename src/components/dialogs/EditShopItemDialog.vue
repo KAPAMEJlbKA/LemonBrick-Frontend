@@ -11,6 +11,7 @@
         <q-btn color="white" style="margin-bottom: 10px; width: 220px" text-color="black" label="Изминение иконку" @click="page = 'EditIcon'"/>
         <q-btn color="white" style="margin-bottom: 10px; width: 220px" text-color="black" label="Изминение цены" @click="page = 'EditPrice'"/>
         <q-btn color="red" style="margin-bottom: 10px; width: 220px" text-color="black" label="Изминение лимитов" @click="page = 'EditLimit'"/>
+        <q-btn color="red" style="margin-bottom: 10px; width: 220px" text-color="black" label="Изминение всего" @click="page = 'EditAll'"/>
       </q-card-section>
       <q-card-section class="row items-center q-pb-none" style="flex-direction: column;" v-if="page === 'EditName'">
         <q-input v-model="name" style="margin-bottom: 10px; width: 220px" label="Новое название"></q-input>
@@ -30,6 +31,37 @@
         <q-input v-model="data" style="margin-bottom: 10px; width: 220px" filled type="date"/>
         <q-input v-model="count" style="margin-bottom: 10px; width: 220px" label="Новае количество"></q-input>
         <q-btn flat color="primary" style="margin-bottom: 10px; width: 220px" @click="UpdateLimits()">Загрузить</q-btn>
+      </q-card-section>
+      <q-card-section class="row items-center q-pb-none" style="flex-direction: column;" v-if="page === 'EditAll'">
+        <q-input v-model="name" label="Отображаемое имя" style="margin-bottom: 10px; width: 300px"></q-input>
+        <q-input outlined v-model="description" type="textarea" label="Описание" style="margin-bottom: 10px; width: 300px"></q-input>
+        <q-input v-model="price" label="Цена" style="margin-bottom: 10px; width: 300px"></q-input>
+        <q-input v-model="currency" label="Валюта" style="margin-bottom: 10px; width: 300px"></q-input>
+        <UploadFile ref="Icon" style="margin-bottom: 10px; width: 300px"></UploadFile>
+        <q-separator></q-separator>
+        <q-input v-model="itemName" label="Имя или id предмета в minecraft" style="margin-bottom: 10px; width: 300px"></q-input>
+        <q-input v-model="itemExtra" label="Extra предмета в minecraft" style="margin-bottom: 10px; width: 300px"></q-input>
+        <q-input v-model="itemNbt" type="textarea" label="NBT предмета в minecraft" style="margin-bottom: 10px; width: 300px"></q-input>
+        <q-input v-model="itemCustom" label="Custom предмета в minecraft (зарезервировано)" style="margin-bottom: 10px; width: 300px"></q-input>
+        <q-input v-model="itemQuantity" label="Число предметов при покупке 1шт" type="number" style="margin-bottom: 10px; width: 300px"></q-input>
+        <q-item-label style="font-size: 1.1em; padding-top: 1rem; padding-bottom: 1rem">{{server}}</q-item-label>
+        <q-btn color="primary" v-model="server" label="Выбрать сервер" style="margin-bottom: 10px; width: 300px">
+          <q-menu
+            transition-show="scale"
+            transition-hide="scale"
+          >
+            <q-list style="min-width: 100px">
+              <q-item clickable v-close-popup @click="server = 'global'">
+                <q-item-section >Глобальные</q-item-section>
+              </q-item>
+              <q-item clickable v-close-popup @click="server = 'Lemonilla'">
+                <q-item-section>Lemonilla</q-item-section>
+              </q-item>
+              <q-separator />
+            </q-list>
+          </q-menu>
+        </q-btn>
+        <q-btn flat color="primary" style="margin-bottom: 10px; width: 220px" @click="UpdateAll()">Загрузить</q-btn>
       </q-card-section>
     </q-card>
 
@@ -62,6 +94,13 @@ export default defineComponent({
     const time = ref(null)
     const data = ref(null)
     const count = ref(0)
+    const currency = ref("LEM");
+    const itemName = ref("minecraft:stone");
+    const itemExtra = ref("");
+    const itemNbt = ref("{}");
+    const itemCustom = ref("");
+    const itemQuantity = ref(1);
+    const server = ref("global");
 
     async function UpdateName() {
       var result = await $store.dispatch("api/request", {
@@ -172,6 +211,38 @@ export default defineComponent({
         })
       }
     }
+    async function UpdateAll() {
+      var result = await $store.dispatch("api/request", {
+        url: "shop/item/id/" + props.itemId + "updateall",
+        method: "PUT",
+        body: {
+          displayName: name.value,
+          description: description.value,
+          itemName: itemName.value,
+          itemExtra: itemExtra.value,
+          itemNbt: itemNbt.value,
+          itemCustom: itemCustom.value,
+          itemQuantity: itemQuantity.value,
+          server: server.value,
+          price: price.value,
+          currency: currency.value,
+          pictureName: Icon.value.name
+        },
+      });
+      if (result.ok) {
+        $q.notify({
+          "type": "positive",
+          "message": "Товар создан"
+        })
+        show = false
+      } else {
+        var error = result.data
+        $q.notify({
+          "type": "negative",
+          "message": "Ошибка при создании товара: SC" + error.code + ": " + error.error
+        })
+      }
+    }
     return {
       show,
       name,
@@ -182,10 +253,18 @@ export default defineComponent({
       count,
       description,
       page,
+      currency,
+      itemName,
+      itemExtra,
+      itemNbt,
+      itemCustom,
+      itemQuantity,
+      server,
       UpdateName,
       UpdateIcon,
       UpdatePrice,
-      UpdateLimits
+      UpdateLimits,
+      UpdateAll
     };
   },
 });

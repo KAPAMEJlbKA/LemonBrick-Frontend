@@ -67,6 +67,7 @@ export default defineComponent({
     var server = ref("global");
     var price = ref(100.0);
     var currency = ref("DONATE");
+    var currency = ref("LEM");
     var file = ref(null);
     async function send() {
       console.log(file)

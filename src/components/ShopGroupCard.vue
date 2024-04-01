@@ -1,19 +1,19 @@
 <template>
-  <q-card v-if="item.server === server_sort || server_sort === ''" style="width: 360px; height: 380px">
+  <q-card v-if="item.server === server_sort || server_sort === ''" style="width: 360px; height: 370px">
     <q-card-section>
       {{ item.displayName }}
     </q-card-section>
     <q-separator></q-separator>
     <q-card-section>
       <div class="flex flex-center">
-        <img :src="item.pictureUrl" style="max-height: 512px; max-width: 256px;">
+        <img :src="item.pictureUrl" height="128" width="128">
       </div>
     </q-card-section>
     <q-card-section style="height: 80px">{{ item.description }}</q-card-section>
     <q-separator></q-separator>
     <q-card-actions>
-      <q-input v-model.number="num" type="number" style="width: 50px"></q-input>
-      <span style="margin: 1em">{{ item.server }}</span>
+      <q-input v-model.number="num" type="number" style="width: 50px;"></q-input>
+      <span style="margin-left: 1em">{{ item.server }}</span>
       <span style="margin: 1em"> {{ sum }} {{ item.currency }} </span>
       <q-btn flat color="blue" @click="buy" :enable="num >= 1">Купить</q-btn>
       <q-btn v-if="isAdmin" flat color="primary" @click="modalEdit.show = true" ><img src="../assets/svg/edit.svg" alt="Edit"></q-btn>

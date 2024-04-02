@@ -1,20 +1,20 @@
 <template>
-  <q-card>
-    <q-card-section>
-      <div class="text-h6">Вход в личный кабинет</div>
-      <q-input filled v-model="username" label="Ваш логин или email *" lazy-rules :rules="[
+
+  <q-card style="width: 300px; height: 300px; background-color: #f6f6f6; border-radius: 30px; display: flex; flex-direction: column;">
+    <q-card-section style="margin-left: auto; margin-right: auto; padding: 0">
+      <div class="text-h6" style="margin-bottom: 20px; margin-top: 20px">Вход в личный кабинет</div>
+      <q-input rounded standout v-model="username" style="margin-bottom: 10px" bg-color="white" label="Ваш логин или email" lazy-rules :rules="[
+       (val) => (val && val.length > 0) || 'Это поле не может быть пустым',
+      ]"></q-input>
+      <q-input rounded standout v-model="password" style="margin-bottom: 10px" bg-color="white" label="Ваш пароль" type="password" lazy-rules :rules="[
         (val) => (val && val.length > 0) || 'Это поле не может быть пустым',
       ]"></q-input>
-      <q-input filled v-model="password" label="Ваш пароль *" type="password" lazy-rules :rules="[
-        (val) => (val && val.length > 0) || 'Это поле не может быть пустым',
-      ]"></q-input>
-      <q-input v-if="require2FA" filled v-model="totp" label="Введите код 2FA *" type="password" lazy-rules :rules="[
+      <q-input v-if="require2FA" rounded standout v-model="totp" style="margin-bottom: 10px" bg-color="white" label="Введите код 2FA" type="password" lazy-rules :rules="[
         (val) => (val && val.length > 0) || 'Это поле не может быть пустым',
       ]"></q-input>
     </q-card-section>
-    <q-card-actions>
-      <q-btn flat @click="authorize">Войти</q-btn>
-      <q-btn flat @click="redirectRegister">Регистрация</q-btn>
+    <q-card-actions style="margin-left: auto; margin-right: auto; padding: 0">
+      <q-btn rounded color="orange" style="width: 200px" @click="authorize">Войти</q-btn>
     </q-card-actions>
   </q-card>
 </template>

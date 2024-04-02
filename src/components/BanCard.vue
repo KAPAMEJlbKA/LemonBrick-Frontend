@@ -1,7 +1,23 @@
 <template>
-    <q-item>
-        Пользователь {{ value.targetUsername }} был забанен модератором {{ value.moderatorUsername }} по причине {{ value.reason ? value.reason : "?" }}
-    </q-item>
+    <q-card style="width: 300px; height: 165px">
+      <q-card-section style="display: flex; gap: 30px; ">
+        <div style="display: flex; flex-direction: column">
+          <span style="font-weight: 600">Кого забанили:</span>
+          {{ value.targetUsername }}
+        </div>
+        <div style="display: flex; flex-direction: column">
+          <span style="font-weight: 600">Кто забанил:</span>
+          {{ value.moderatorUsername }}
+        </div>
+      </q-card-section>
+      <q-separator></q-separator>
+      <q-card-section>
+        <div style="display: flex; flex-direction: column">
+          <span style="font-weight: 600">Причина:</span>
+          {{ value.reason ? value.reason : null }}
+        </div>
+      </q-card-section>
+    </q-card>
 </template>
 <script>
 import { useQuasar } from "quasar";
@@ -21,3 +37,8 @@ export default defineComponent({
   }
 })
 </script>
+<style>
+.main {
+
+}
+</style>

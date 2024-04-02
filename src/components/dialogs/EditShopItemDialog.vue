@@ -11,7 +11,7 @@
         <q-btn color="white" style="margin-bottom: 10px; width: 220px" text-color="black" label="Изминение иконку" @click="page = 'EditIcon'"/>
         <q-btn color="white" style="margin-bottom: 10px; width: 220px" text-color="black" label="Изминение цены" @click="page = 'EditPrice'"/>
         <q-btn color="red" style="margin-bottom: 10px; width: 220px" text-color="black" label="Изминение лимитов" @click="page = 'EditLimit'"/>
-        <q-btn color="red" style="margin-bottom: 10px; width: 220px" text-color="black" label="Изминение всего" @click="page = 'EditAll'"/>
+        <q-btn color="white" style="margin-bottom: 10px; width: 220px" text-color="black" label="Изминение всего" @click="page = 'EditAll'"/>
       </q-card-section>
       <q-card-section class="row items-center q-pb-none" style="flex-direction: column;" v-if="page === 'EditName'">
         <q-input v-model="name" style="margin-bottom: 10px; width: 220px" label="Новое название"></q-input>
@@ -213,7 +213,7 @@ export default defineComponent({
     }
     async function UpdateAll() {
       var result = await $store.dispatch("api/request", {
-        url: "shop/item/id/" + props.itemId + "updateall",
+        url: "shop/item/id/" + props.itemId + "/updateall",
         method: "PUT",
         body: {
           displayName: name.value,

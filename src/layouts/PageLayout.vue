@@ -107,13 +107,13 @@ export default defineComponent({
             <q-menu anchor="bottom end">
               <div class="row no-wrap q-pa-md">
                 <div class="column">
-                  <q-item clickable :to="'/cabinet'" class="dropmenu-item">
+                  <q-item clickable :to="'/cabinet'" active-class="gg" class="dropmenu-item">
                     <q-item-section>Профиль</q-item-section>
                   </q-item>
-                  <q-item clickable :to="'/shop/items'" class="dropmenu-item">
+                  <q-item clickable :to="'/shop/items'" active-class="gg" class="dropmenu-item">
                     <q-item-section>Магазин</q-item-section>
                   </q-item>
-                  <q-item v-if="isAdmin === true" clickable :to="'/admin'" class="dropmenu-item">
+                  <q-item v-if="isAdmin === true" clickable :to="'/admin'" active-class="gg" class="dropmenu-item">
                     <q-item-section>Панель</q-item-section>
                   </q-item>
                 </div>
@@ -177,6 +177,9 @@ export default defineComponent({
 }
 .nav-element {
 
+}
+.gg {
+  color: orange;
 }
 .nav-element-active {
   border-bottom: 1px solid #ffffff;

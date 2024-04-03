@@ -1,20 +1,20 @@
 <template>
   <q-dialog v-model="show">
-    <q-card>
-      <q-card-section class="row items-center q-pb-none">
+    <q-card style="border-radius: 20px; display: flex; flex-direction: column;">
+      <q-card-section class="row items-center q-pb-none" style="margin-left: auto; margin-right: auto">
         <div class="text-h6">Обмен валют</div>
         <q-space></q-space>
         <q-btn icon="close" flat round dense v-close-popup></q-btn>
       </q-card-section>
-      <q-card-section>
+      <q-card-section style="margin-left: auto; margin-right: auto">
         <q-input v-model="fromValue"></q-input>
         <q-select v-model="fromCurrency" :options="myCurrencies" />
         <p>Поменять на</p>
         <q-input v-model="toValue"></q-input>
         <q-select v-model="toCurrency" :options="targetCurrencies" />
       </q-card-section>
-      <q-card-actions>
-        <q-btn flat color="primary" @click="transfer(fromValue, fromCurrency, toCurrency)">Обменять</q-btn>
+      <q-card-actions style="margin-left: auto; margin-right: auto">
+        <q-btn flat color="orange" @click="transfer(fromValue, fromCurrency, toCurrency)">Обменять</q-btn>
       </q-card-actions>
     </q-card>
   </q-dialog>

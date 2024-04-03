@@ -1,15 +1,15 @@
 <template>
   <q-dialog v-model="show">
-    <q-card>
-      <q-card-section class="row items-center q-pb-none">
-        <div class="text-h6">Транзакции {{ balance.currency }} <q-badge>ALPHA</q-badge></div>
+    <q-card style="border-radius: 20px; display: flex; flex-direction: column;">
+      <q-card-section class="row items-center q-pb-none" style="margin-left: auto; margin-right: auto">
+        <div class="text-h6">Транзакции {{ balance.currency }}</div>
         <q-space></q-space>
         <q-btn icon="close" flat round dense v-close-popup></q-btn>
       </q-card-section>
-      <q-card-section>
+      <q-card-section style="margin-left: auto; margin-right: auto">
         <q-list>
           <q-item v-for="t in items">
-              <q-card class="full-width">
+              <q-card class="full-width" style="border-radius: 15px">
                 <q-card-section>
                 Транзакция {{ t.id }} <q-badge v-if="t.multicurrency" color="green">Мультивалютная</q-badge>
                 </q-card-section>
@@ -27,10 +27,8 @@
               </q-card>
           </q-item>
         </q-list>
-        <q-pagination v-model="currentPage" :max="maxPages"></q-pagination>
+        <q-pagination v-model="currentPage" color="orange" :max="maxPages"></q-pagination>
       </q-card-section>
-      <q-card-actions>
-      </q-card-actions>
     </q-card>
   </q-dialog>
 </template>

@@ -1,25 +1,23 @@
 <template>
       <q-dialog v-model="show">
-      <q-card>
-        <q-card-section class="row items-center q-pb-none">
+      <q-card style="border-radius: 20px; display: flex; flex-direction: column;">
+        <q-card-section class="row items-center q-pb-none" style="margin-left: auto; margin-right: auto">
           <div class="text-h6">Добавление группы</div>
           <q-space></q-space>
           <q-btn icon="close" flat round dense v-close-popup></q-btn>
         </q-card-section>
-        <q-card-section>
-          <q-input filled v-model="groupName" label="Название *" lazy-rules
+        <q-card-section style="margin-left: auto; margin-right: auto; margin-top: 10px; padding: 0">
+          <q-input filled v-model="groupName" label="Название" lazy-rules
           :rules="[ val => val && val.length > 0 || 'Введите название группы']">
           </q-input>
-          <q-input filled v-model="days" type="integer" label="Дней до истечения *" lazy-rules
+          <q-input filled v-model="days" type="integer" label="Дней до истечения" lazy-rules
           :rules="[ val => val && val >= 0 || 'Введите колличество дней (0 - бесконечно)']">
           </q-input>
-          <q-input filled v-model="priority" type="integer" label="Приоритет *" lazy-rules
+          <q-input filled v-model="priority" type="integer" label="Приоритет" lazy-rules
           :rules="[ val => val && val >= 0 || 'Введите приоритет']">
           </q-input>
         </q-card-section>
-        <q-separator dark></q-separator>
-
-        <q-card-actions>
+        <q-card-actions style="margin-left: auto; margin-right: auto; padding: 0; margin-bottom: 15px">
           <q-btn flat color="orange" @click="addGroup">Добавить</q-btn>
         </q-card-actions>
       </q-card>

@@ -1,5 +1,5 @@
 <template>
-  <q-card style="width: 100%; max-width: 800px">
+  <q-card style="width: 100%; max-width: 800px; border-radius: 25px">
     <q-item>
       <q-item-section avatar>
         <q-avatar>
@@ -49,7 +49,7 @@
             </q-item-section>
           </q-item>
           <q-item-section>
-            <q-list bordered style="max-width: 400px" v-if="user.groups && user.groups.length > 0">
+            <q-list bordered style="max-width: 400px; border-radius: 10px" v-if="user.groups && user.groups.length > 0">
               <q-item v-for="group in user.groups" v-bind:key="group.name">
                 <q-item-section>
                   <q-item-label>
@@ -76,7 +76,7 @@
               </q-item-label>
             </q-item-section>
           </q-item>
-          <q-list bordered>
+          <q-list bordered style="border-radius: 10px">
             <q-item v-for="balance in balances" v-bind:key="balance.id">
               <q-item-section>
                 <q-item-label>{{ balance.currency }}</q-item-label>

@@ -1,32 +1,19 @@
 <template>
   <q-dialog v-model="show">
-    <q-card>
-      <q-card-section class="row items-center q-pb-none">
+    <q-card style="border-radius: 20px; display: flex; flex-direction: column;">
+      <q-card-section class="row items-center q-pb-none" style="margin-left: auto; margin-right: auto">
         <div class="text-h6">Изменение скина</div>
         <q-space></q-space>
         <q-btn icon="close" flat round dense v-close-popup></q-btn>
       </q-card-section>
-      <q-card-section v-if="skin">
-        <p>
-          Текущий URL: {{ skin.url }} <br />
-          Текущий тип скина:
-          {{
-            skin.metadata && skin.metadata.model == "slim"
-            ? "Slim"
-            : "Обычный"
-          }}
-        </p>
-      </q-card-section>
-      <q-card-section>
+      <q-card-section style="margin-left: auto; margin-right: auto">
         <q-file v-model="file" label="Выберите файл для загрузки" accept=".png, image/png">
 
         </q-file>
         <q-toggle v-model="toggleSlim" label="Slim скин"></q-toggle>
       </q-card-section>
-      <q-separator dark></q-separator>
-
-      <q-card-actions>
-        <q-btn flat color="primary" @click="upload" :disable="!file">Загрузить</q-btn>
+      <q-card-actions style="margin-left: auto; margin-right: auto">
+        <q-btn flat color="orange" @click="upload" :disable="!file">Загрузить</q-btn>
         <q-btn flat color="red" @click="remove">Удалить</q-btn>
       </q-card-actions>
     </q-card>

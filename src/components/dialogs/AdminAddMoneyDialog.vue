@@ -1,12 +1,12 @@
 <template>
       <q-dialog v-model="show">
-      <q-card>
-        <q-card-section class="row items-center q-pb-none">
+      <q-card style="border-radius: 20px; display: flex; flex-direction: column;">
+        <q-card-section class="row items-center q-pb-none" style="margin-left: auto; margin-right: auto">
           <div class="text-h6">Добавление счета/начисление монет</div>
           <q-space></q-space>
           <q-btn icon="close" flat round dense v-close-popup></q-btn>
         </q-card-section>
-        <q-card-section>
+        <q-card-section style="margin-left: auto; margin-right: auto; margin-top: 10px; padding: 0">
           <q-input filled v-model="currency" label="Валюта *" lazy-rules
           :rules="[ val => val && val.length > 0 || 'Введите валюту']">
           </q-input>
@@ -17,9 +17,7 @@
           :rules="[ val => val && val.length >= 0 || 'Введите комментарий']">
           </q-input>
         </q-card-section>
-        <q-separator dark></q-separator>
-
-        <q-card-actions>
+        <q-card-actions style="margin-left: auto; margin-right: auto; padding: 0; margin-bottom: 15px">
           <q-btn flat color="orange" @click="addGroup">Добавить</q-btn>
         </q-card-actions>
       </q-card>

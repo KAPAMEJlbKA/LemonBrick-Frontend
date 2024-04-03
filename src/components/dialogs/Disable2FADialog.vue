@@ -1,19 +1,17 @@
 <template>
   <q-dialog v-model="show">
-    <q-card>
-      <q-card-section class="row items-center q-pb-none">
+    <q-card style="border-radius: 20px; display: flex; flex-direction: column;">
+      <q-card-section class="row items-center q-pb-none" style="margin-left: auto; margin-right: auto">
         <div class="text-h6">Отключение 2FA</div>
         <q-space></q-space>
         <q-btn icon="close" flat round dense v-close-popup></q-btn>
       </q-card-section>
-      <q-card-section>
+      <q-card-section style="margin-left: auto; margin-right: auto">
         <q-input filled v-model="code" type="password" label="Введите код из приложения *" lazy-rules
           :rules="[val => val && val.length == 6 && ( val >= 0 && val <= 999999 ) || 'Проверьте правильность написания кода']">
         </q-input>
       </q-card-section>
-      <q-separator dark></q-separator>
-
-      <q-card-actions>
+      <q-card-actions style="margin-left: auto; margin-right: auto">
         <q-btn flat color="orange" @click="disable2FA">Отключить</q-btn>
       </q-card-actions>
     </q-card>

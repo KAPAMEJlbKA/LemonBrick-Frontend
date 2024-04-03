@@ -1,16 +1,16 @@
 <template>
   <q-dialog v-model="show">
-    <q-card>
-      <q-card-section class="row items-center q-pb-none">
+    <q-card style="border-radius: 20px; display: flex; flex-direction: column;">
+      <q-card-section class="row items-center q-pb-none" style="margin-left: auto; margin-right: auto">
         <div class="text-h6">Пополнение баланса</div>
         <q-space></q-space>
         <q-btn icon="close" flat round dense v-close-popup></q-btn>
       </q-card-section>
-      <q-card-section>
+      <q-card-section style="margin-left: auto; margin-right: auto">
         <q-select v-model="option" :options="options" label="Метод оплаты *"></q-select>
         <q-input v-model="amount" label="Сумма пополнения *" :rules="[ val => val && val >= 0 || 'Введите сумму']"></q-input>
       </q-card-section>
-      <q-card-actions>
+      <q-card-actions style="margin-left: auto; margin-right: auto">
         <q-btn flat color="primary" @click="payment">Пополнить</q-btn>
       </q-card-actions>
     </q-card>

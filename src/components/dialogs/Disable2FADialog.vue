@@ -14,7 +14,7 @@
       <q-separator dark></q-separator>
 
       <q-card-actions>
-        <q-btn flat color="primary" @click="disable2FA">Отключить</q-btn>
+        <q-btn flat color="orange" @click="disable2FA">Отключить</q-btn>
       </q-card-actions>
     </q-card>
   </q-dialog>

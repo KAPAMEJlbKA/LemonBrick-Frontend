@@ -2,9 +2,9 @@
   <q-page>
 
     <div style="margin: 10px;" >
-      <q-btn v-if="isAdmin" :color="'primary'" style="height: 40px; width: 40px;" @click="modalCreate.show = true"><img src="../assets/svg/create.svg"></q-btn>
+      <q-btn v-if="isAdmin" :color="'orange'" style="height: 40px; width: 40px;" @click="modalCreate.show = true"><img src="../assets/svg/create.svg"></q-btn>
 
-      <q-btn color="primary" label="Фильтр" style="margin: 1em">
+      <q-btn color="orange" label="Фильтр" style="margin: 1em">
         <q-menu
           transition-show="scale"
           transition-hide="scale"
@@ -23,7 +23,7 @@
           </q-list>
         </q-menu>
       </q-btn>
-      <q-btn :color="'primary'" style="width: 300px; margin-left: 32vw" :to="'/shop/groups'">Магазин привилегий</q-btn>
+      <q-btn :color="'orange'" style="width: 300px; margin-left: 32vw" :to="'/shop/groups'">Магазин привилегий</q-btn>
 
     </div>
   <div class="q-pa-md row items-start q-gutter-md" :key="filter">
@@ -31,7 +31,7 @@
     <shop-item-card :item="item" :server_sort="filter" :key="item.id" v-for="item in items">
     </shop-item-card>
   </div>
-  <q-pagination v-model="currentPage" :max="maxPages"></q-pagination>
+  <q-pagination v-model="currentPage" color="orange" :max="maxPages"></q-pagination>
   <create-shop-item-dialog ref="modalCreate">
 
 </create-shop-item-dialog>

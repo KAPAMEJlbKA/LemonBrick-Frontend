@@ -19,7 +19,7 @@
         <q-input v-model="itemCustom" label="Custom предмета в minecraft (зарезервировано)"></q-input>
         <q-input v-model="itemQuantity" label="Число предметов при покупке 1шт" type="number"></q-input>
         <q-item-label style="font-size: 1.1em; padding-top: 1rem; padding-bottom: 1rem">{{server}}</q-item-label>
-        <q-btn color="primary" v-model="server" label="Выбрать сервер">
+        <q-btn color="orange" v-model="server" label="Выбрать сервер">
           <q-menu
             transition-show="scale"
             transition-hide="scale"
@@ -37,7 +37,7 @@
         </q-btn>
       </q-card-section>
       <q-card-actions>
-        <q-btn flat color="primary" @click="send()">Загрузить</q-btn>
+        <q-btn flat color="orange" @click="send()">Загрузить</q-btn>
       </q-card-actions>
     </q-card>
   </q-dialog>

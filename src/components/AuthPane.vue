@@ -1,6 +1,6 @@
 <template>
 
-  <q-card style="width: 300px; height: 300px; background-color: #f6f6f6; border-radius: 30px; display: flex; flex-direction: column;">
+  <q-card style="width: 300px; height: 340px; background-color: #f6f6f6; border-radius: 30px; display: flex; flex-direction: column;">
     <q-card-section style="margin-left: auto; margin-right: auto; padding: 0">
       <div class="text-h6" style="margin-bottom: 20px; margin-top: 20px">Вход в личный кабинет</div>
       <q-input rounded standout v-model="username" style="margin-bottom: 10px" bg-color="white" label="Ваш логин или email" lazy-rules :rules="[
@@ -13,8 +13,12 @@
         (val) => (val && val.length > 0) || 'Это поле не может быть пустым',
       ]"></q-input>
     </q-card-section>
-    <q-card-actions style="margin-left: auto; margin-right: auto; padding: 0">
+    <q-card-actions style="margin-left: auto; margin-right: auto; padding: 0; display: flex; flex-direction: column">
       <q-btn rounded color="orange" style="width: 200px" @click="authorize">Войти</q-btn>
+      <div style="margin-left: auto; margin-right: auto; padding: 0; margin-top: 10px">
+        <q-btn flat style="font-size: 11px" @click="redirectRegister">Нету аккаунта?</q-btn>
+        <q-btn flat style="font-size: 11px" @click="redirectRegister">Забыли пароль?</q-btn>
+      </div>
     </q-card-actions>
   </q-card>
 </template>

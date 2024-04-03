@@ -1,20 +1,20 @@
 <template>
-  <q-card>
-    <q-card-section>
-      <div class="text-h6">Регистрация в личном кабинете</div>
-      <q-input filled v-model="username" label="Ваш логин *" lazy-rules :rules="[
+  <q-card style="width: 350px; height: 480px; background-color: #f6f6f6; border-radius: 30px; display: flex; flex-direction: column;">
+    <q-card-section style="margin-left: auto; margin-right: auto; padding: 0; display: flex; flex-direction: column">
+      <div class="text-h6" style="margin-bottom: 20px; margin-top: 20px">Регистрация</div>
+      <q-input rounded standout v-model="username"  style="margin-bottom: 10px" bg-color="white" label="Ваш логин" lazy-rules :rules="[
         (val) => (val && val.length > 0) || 'Это поле не может быть пустым',
       ]"></q-input>
-      <q-input filled v-model="email" label="Ваш Email *" lazy-rules :rules="[
+      <q-input rounded standout v-model="email"  style="margin-bottom: 10px" bg-color="white" label="Ваш Email" lazy-rules :rules="[
         (val) => (val && val.length > 0) || 'Это поле не может быть пустым',
       ]"></q-input>
-      <q-input filled v-model="password" label="Ваш пароль *" type="password" lazy-rules :rules="[
+      <q-input rounded standout v-model="password"  style="margin-bottom: 10px" bg-color="white" label="Ваш пароль" type="password" lazy-rules :rules="[
         (val) => (val && val.length > 0) || 'Это поле не может быть пустым',
       ]"></q-input>
       <vue-hcaptcha :sitekey="sitekey" @verify="updateToken"></vue-hcaptcha>
     </q-card-section>
-    <q-card-actions>
-      <q-btn flat @click="register">Зарегистрироватся</q-btn>
+    <q-card-actions style="margin-left: auto; margin-right: auto; padding: 0; display: flex; flex-direction: column">
+      <q-btn rounded color="orange" style="width: 200px; margin-top: 10px" @click="register">Зарегистрироватся</q-btn>
     </q-card-actions>
   </q-card>
 </template>

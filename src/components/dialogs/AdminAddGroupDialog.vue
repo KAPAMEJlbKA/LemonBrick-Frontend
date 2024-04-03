@@ -20,7 +20,7 @@
         <q-separator dark></q-separator>
 
         <q-card-actions>
-          <q-btn flat color="primary" @click="addGroup">Добавить</q-btn>
+          <q-btn flat color="orange" @click="addGroup">Добавить</q-btn>
         </q-card-actions>
       </q-card>
     </q-dialog>

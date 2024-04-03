@@ -24,7 +24,7 @@
         <q-checkbox v-model="stackable" label="Разрешить стакинг"></q-checkbox>
       </q-card-section>
       <q-card-actions>
-        <q-btn flat color="primary" @click="send()">Загрузить</q-btn>
+        <q-btn flat color="orange" @click="send()">Загрузить</q-btn>
       </q-card-actions>
     </q-card>
   </q-dialog>

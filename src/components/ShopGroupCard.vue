@@ -15,8 +15,8 @@
       <q-input v-model.number="num" type="number" style="width: 50px;"></q-input>
       <span style="margin-left: 1em">{{ item.server }}</span>
       <span style="margin: 1em"> {{ sum }} {{ item.currency }} </span>
-      <q-btn flat color="blue" @click="buy" :enable="num >= 1">Купить</q-btn>
-      <q-btn v-if="isAdmin" flat color="primary" @click="modalEdit.show = true" ><img src="../assets/svg/edit.svg" alt="Edit"></q-btn>
+      <q-btn flat color="orange" @click="buy"  :enable="num >= 1">Купить</q-btn>
+      <q-btn v-if="isAdmin" flat color="orange" @click="modalEdit.show = true" ><img src="../assets/svg/edit.svg" alt="Edit"></q-btn>
     </q-card-actions>
   </q-card>
   <edit-shop-groups-dialog ref="modalEdit" :item-id="item.id"></edit-shop-groups-dialog>

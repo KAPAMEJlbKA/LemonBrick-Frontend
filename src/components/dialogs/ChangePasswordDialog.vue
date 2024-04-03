@@ -20,7 +20,7 @@
       <q-separator dark></q-separator>
 
       <q-card-actions>
-        <q-btn flat color="primary" @click="changePassword">Изменить</q-btn>
+        <q-btn flat color="orange" @click="changePassword">Изменить</q-btn>
       </q-card-actions>
     </q-card>
   </q-dialog>

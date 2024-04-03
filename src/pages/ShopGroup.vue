@@ -1,9 +1,9 @@
 <template>
   <q-page>
     <div style="margin: 10px;" >
-      <q-btn v-if="isAdmin" :color="'primary'" style="height: 40px; width: 40px;" @click="modalCreate.show = true"><img src="../assets/svg/create.svg"></q-btn>
+      <q-btn v-if="isAdmin" :color="'orange'" style="height: 40px; width: 40px;" @click="modalCreate.show = true"><img src="../assets/svg/create.svg"></q-btn>
 
-      <q-btn color="primary" label="Фильтр" style="margin: 1em">
+      <q-btn color="orange" label="Фильтр" style="margin: 1em">
         <q-menu
           transition-show="scale"
           transition-hide="scale"
@@ -22,7 +22,7 @@
           </q-list>
         </q-menu>
       </q-btn>
-      <q-btn :color="'primary'" style="width: 300px; margin-left: 32vw" :to="'/shop/items'">Магазин предметов</q-btn>
+      <q-btn :color="'orange'" style="width: 300px; margin-left: 32vw" :to="'/shop/items'">Магазин предметов</q-btn>
 
     </div>
   <div class="q-pa-md row items-start q-gutter-md">
@@ -31,7 +31,7 @@
 
     </shop-group-card>
   </div>
-  <q-pagination v-model="currentPage" :max="maxPages"></q-pagination>
+  <q-pagination v-model="currentPage" color="orange" :max="maxPages"></q-pagination>
   <create-shop-group-dialog ref="modalCreate">
 
   </create-shop-group-dialog>

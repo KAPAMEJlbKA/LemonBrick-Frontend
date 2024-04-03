@@ -1,20 +1,20 @@
 <template>
   <q-dialog v-model="show">
-    <q-card>
-      <q-card-section class="row items-center q-pb-none">
+    <q-card style="border-radius: 20px; display: flex; flex-direction: column;">
+      <q-card-section class="row items-center q-pb-none" style="margin-left: auto; margin-right: auto">
         <div class="text-h6">Редактирование</div>
         <q-space></q-space>
         <q-btn icon="close" flat round dense v-close-popup></q-btn>
       </q-card-section>
       <q-card-section class="row items-center q-pb-none" style="flex-direction: column;" v-if="page === ''">
-        <q-btn color="white" style="margin-bottom: 10px; width: 220px" text-color="black" label="Изминение названия" @click="page = 'EditName'"/>
+        <q-btn color="white" style="margin-bottom: 10px; width: 220px"  text-color="black" label="Изминение названия" @click="page = 'EditName'"/>
         <q-btn color="white" style="margin-bottom: 10px; width: 220px" text-color="black" label="Изминение иконку" @click="page = 'EditIcon'"/>
         <q-btn color="white" style="margin-bottom: 10px; width: 220px" text-color="black" label="Изминение цены" @click="page = 'EditPrice'"/>
         <q-btn color="red" style="margin-bottom: 10px; width: 220px" text-color="black" label="Изминение лимитов" @click="page = 'EditLimit'"/>
       </q-card-section>
       <q-card-section class="row items-center q-pb-none" style="flex-direction: column;" v-if="page === 'EditName'">
-        <q-input v-model="name" style="margin-bottom: 10px; width: 220px" label="Новое название"></q-input>
-        <q-input v-model="description" style="margin-bottom: 10px; width: 220px" label="Новое описание"></q-input>
+        <q-input v-model="name" color="orange" style="margin-bottom: 10px; width: 220px" label="Новое название"></q-input>
+        <q-input v-model="description" color="orange" style="margin-bottom: 10px; width: 220px" label="Новое описание"></q-input>
         <q-btn flat color="orange" style="margin-bottom: 10px; width: 220px" @click="UpdateName()">Загрузить</q-btn>
       </q-card-section>
       <q-card-section class="row items-center q-pb-none" style="flex-direction: column;" v-if="page === 'EditIcon'">
@@ -22,13 +22,13 @@
         <q-btn flat color="orange" style="margin-bottom: 10px; width: 220px" @click="UpdateIcon()">Загрузить</q-btn>
       </q-card-section>
       <q-card-section class="row items-center q-pb-none" style="flex-direction: column;" v-if="page === 'EditPrice'">
-        <q-input v-model="price" style="margin-bottom: 10px; width: 220px" label="Новая цена"></q-input>
+        <q-input v-model="price" color="orange" style="margin-bottom: 10px; width: 220px" label="Новая цена"></q-input>
         <q-btn flat color="orange" style="margin-bottom: 10px; width: 220px" @click="UpdatePrice()">Загрузить</q-btn>
       </q-card-section>
       <q-card-section class="row items-center q-pb-none" style="flex-direction: column;" v-if="page === 'EditLimit'">
-        <q-input v-model="time" style="margin-bottom: 10px; width: 220px" filled type="time"/>
-        <q-input v-model="data" style="margin-bottom: 10px; width: 220px" filled type="date"/>
-        <q-input v-model="count" style="margin-bottom: 10px; width: 220px" label="Новае количество"></q-input>
+        <q-input v-model="time" color="orange" style="margin-bottom: 10px; width: 220px" filled type="time"/>
+        <q-input v-model="data" color="orange" style="margin-bottom: 10px; width: 220px" filled type="date"/>
+        <q-input v-model="count" color="orange" style="margin-bottom: 10px; width: 220px" label="Новае количество"></q-input>
         <q-btn flat color="orange" style="margin-bottom: 10px; width: 220px" @click="UpdateLimits()">Загрузить</q-btn>
       </q-card-section>
     </q-card>

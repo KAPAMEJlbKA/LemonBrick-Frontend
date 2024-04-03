@@ -1,23 +1,23 @@
 <template>
   <q-dialog v-model="show">
-    <q-card>
-      <q-card-section class="row items-center q-pb-none">
+    <q-card style="border-radius: 20px; display: flex; flex-direction: column;">
+      <q-card-section class="row items-center q-pb-none" style="margin-left: auto; margin-right: auto">
         <div class="text-h6">Создание нового товара (предмет)</div>
         <q-space></q-space>
         <q-btn icon="close" flat round dense v-close-popup></q-btn>
       </q-card-section>
-      <q-card-section>
-        <q-input v-model="displayName" label="Отображаемое имя"></q-input>
-        <q-input outlined v-model="description" type="textarea" label="Описание"></q-input>
-        <q-input v-model="price" label="Цена"></q-input>
-        <q-input v-model="currency" label="Валюта"></q-input>
+      <q-card-section style="margin-left: auto; margin-right: auto; width: 95%">
+        <q-input v-model="displayName" color="orange" label="Отображаемое имя"></q-input>
+        <q-input outlined v-model="description" color="orange" type="textarea" label="Описание"></q-input>
+        <q-input v-model="price" color="orange" label="Цена"></q-input>
+        <q-input v-model="currency" color="orange" label="Валюта"></q-input>
         <UploadFile ref="file"></UploadFile>
         <q-separator></q-separator>
-        <q-input v-model="itemName" label="Имя или id предмета в minecraft"></q-input>
-        <q-input v-model="itemExtra" label="Extra предмета в minecraft"></q-input>
-        <q-input v-model="itemNbt" type="textarea" label="NBT предмета в minecraft"></q-input>
-        <q-input v-model="itemCustom" label="Custom предмета в minecraft (зарезервировано)"></q-input>
-        <q-input v-model="itemQuantity" label="Число предметов при покупке 1шт" type="number"></q-input>
+        <q-input v-model="itemName" color="orange" label="Имя или id предмета в minecraft"></q-input>
+        <q-input v-model="itemExtra" color="orange" label="Extra предмета в minecraft"></q-input>
+        <q-input v-model="itemNbt" color="orange" type="textarea" label="NBT предмета в minecraft"></q-input>
+        <q-input v-model="itemCustom" color="orange" label="Custom предмета в minecraft (зарезервировано)"></q-input>
+        <q-input v-model="itemQuantity" color="orange" label="Число предметов при покупке 1шт" type="number"></q-input>
         <q-item-label style="font-size: 1.1em; padding-top: 1rem; padding-bottom: 1rem">{{server}}</q-item-label>
         <q-btn color="orange" v-model="server" label="Выбрать сервер">
           <q-menu
@@ -36,7 +36,7 @@
           </q-menu>
         </q-btn>
       </q-card-section>
-      <q-card-actions>
+      <q-card-actions style="margin-left: auto; margin-right: auto">
         <q-btn flat color="orange" @click="send()">Загрузить</q-btn>
       </q-card-actions>
     </q-card>

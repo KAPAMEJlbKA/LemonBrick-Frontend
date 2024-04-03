@@ -1,7 +1,7 @@
 <template>
   <q-dialog v-model="show">
-    <q-card>
-      <q-card-section class="row items-center q-pb-none">
+    <q-card style="border-radius: 20px; display: flex; flex-direction: column;">
+      <q-card-section class="row items-center q-pb-none" style="margin-left: auto; margin-right: auto">
         <div class="text-h6">Редактирование</div>
         <q-space></q-space>
         <q-btn icon="close" flat round dense v-close-popup></q-btn>
@@ -14,38 +14,38 @@
         <q-btn color="white" style="margin-bottom: 10px; width: 220px" text-color="black" label="Изминение всего" @click="page = 'EditAll'"/>
       </q-card-section>
       <q-card-section class="row items-center q-pb-none" style="flex-direction: column;" v-if="page === 'EditName'">
-        <q-input v-model="name" style="margin-bottom: 10px; width: 220px" label="Новое название"></q-input>
-        <q-input v-model="description" style="margin-bottom: 10px; width: 220px" label="Новое описание"></q-input>
-        <q-btn flat color="primary" style="margin-bottom: 10px; width: 220px" @click="UpdateName()">Загрузить</q-btn>
+        <q-input v-model="name" color="orange" style="margin-bottom: 10px; width: 220px" label="Новое название"></q-input>
+        <q-input v-model="description" color="orange" style="margin-bottom: 10px; width: 220px" label="Новое описание"></q-input>
+        <q-btn flat color="orange" style="margin-bottom: 10px; width: 220px" @click="UpdateName()">Загрузить</q-btn>
       </q-card-section>
       <q-card-section class="row items-center q-pb-none" style="flex-direction: column;" v-if="page === 'EditIcon'">
         <UploadFile ref="Icon" style="margin-bottom: 10px; width: 220px"></UploadFile>
-        <q-btn flat color="primary" style="margin-bottom: 10px; width: 220px" @click="UpdateIcon()">Загрузить</q-btn>
+        <q-btn flat color="orange" style="margin-bottom: 10px; width: 220px" @click="UpdateIcon()">Загрузить</q-btn>
       </q-card-section>
       <q-card-section class="row items-center q-pb-none" style="flex-direction: column;" v-if="page === 'EditPrice'">
-        <q-input v-model="price" style="margin-bottom: 10px; width: 220px" label="Новая цена"></q-input>
-        <q-btn flat color="primary" style="margin-bottom: 10px; width: 220px" @click="UpdatePrice()">Загрузить</q-btn>
+        <q-input v-model="price" color="orange" style="margin-bottom: 10px; width: 220px" label="Новая цена"></q-input>
+        <q-btn flat color="orange" style="margin-bottom: 10px; width: 220px" @click="UpdatePrice()">Загрузить</q-btn>
       </q-card-section>
       <q-card-section class="row items-center q-pb-none" style="flex-direction: column;" v-if="page === 'EditLimit'">
-        <q-input v-model="time" style="margin-bottom: 10px; width: 220px" filled type="time"/>
-        <q-input v-model="data" style="margin-bottom: 10px; width: 220px" filled type="date"/>
-        <q-input v-model="count" style="margin-bottom: 10px; width: 220px" label="Новае количество"></q-input>
-        <q-btn flat color="primary" style="margin-bottom: 10px; width: 220px" @click="UpdateLimits()">Загрузить</q-btn>
+        <q-input v-model="time" color="orange" style="margin-bottom: 10px; width: 220px" filled type="time"/>
+        <q-input v-model="data" color="orange" style="margin-bottom: 10px; width: 220px" filled type="date"/>
+        <q-input v-model="count" color="orange" style="margin-bottom: 10px; width: 220px" label="Новае количество"></q-input>
+        <q-btn flat color="orange" style="margin-bottom: 10px; width: 220px" @click="UpdateLimits()">Загрузить</q-btn>
       </q-card-section>
       <q-card-section class="row items-center q-pb-none" style="flex-direction: column;" v-if="page === 'EditAll'">
-        <q-input v-model="name" label="Отображаемое имя" style="margin-bottom: 10px; width: 300px"></q-input>
+        <q-input v-model="name" color="orange" label="Отображаемое имя" style="margin-bottom: 10px; width: 300px"></q-input>
         <q-input outlined v-model="description" type="textarea" label="Описание" style="margin-bottom: 10px; width: 300px"></q-input>
-        <q-input v-model="price" label="Цена" style="margin-bottom: 10px; width: 300px"></q-input>
-        <q-input v-model="currency" label="Валюта" style="margin-bottom: 10px; width: 300px"></q-input>
+        <q-input v-model="price" color="orange" label="Цена" style="margin-bottom: 10px; width: 300px"></q-input>
+        <q-input v-model="currency" color="orange" label="Валюта" style="margin-bottom: 10px; width: 300px"></q-input>
         <UploadFile ref="Icon" style="margin-bottom: 10px; width: 300px"></UploadFile>
         <q-separator></q-separator>
-        <q-input v-model="itemName" label="Имя или id предмета в minecraft" style="margin-bottom: 10px; width: 300px"></q-input>
-        <q-input v-model="itemExtra" label="Extra предмета в minecraft" style="margin-bottom: 10px; width: 300px"></q-input>
-        <q-input v-model="itemNbt" type="textarea" label="NBT предмета в minecraft" style="margin-bottom: 10px; width: 300px"></q-input>
-        <q-input v-model="itemCustom" label="Custom предмета в minecraft (зарезервировано)" style="margin-bottom: 10px; width: 300px"></q-input>
-        <q-input v-model="itemQuantity" label="Число предметов при покупке 1шт" type="number" style="margin-bottom: 10px; width: 300px"></q-input>
+        <q-input v-model="itemName" color="orange" label="Имя или id предмета в minecraft" style="margin-bottom: 10px; width: 300px"></q-input>
+        <q-input v-model="itemExtra" color="orange" label="Extra предмета в minecraft" style="margin-bottom: 10px; width: 300px"></q-input>
+        <q-input v-model="itemNbt" color="orange" type="textarea" label="NBT предмета в minecraft" style="margin-bottom: 10px; width: 300px"></q-input>
+        <q-input v-model="itemCustom" color="orange" label="Custom предмета в minecraft (зарезервировано)" style="margin-bottom: 10px; width: 300px"></q-input>
+        <q-input v-model="itemQuantity" color="orange" label="Число предметов при покупке 1шт" type="number" style="margin-bottom: 10px; width: 300px"></q-input>
         <q-item-label style="font-size: 1.1em; padding-top: 1rem; padding-bottom: 1rem">{{server}}</q-item-label>
-        <q-btn color="primary" v-model="server" label="Выбрать сервер" style="margin-bottom: 10px; width: 300px">
+        <q-btn color="orange" v-model="server" label="Выбрать сервер" style="margin-bottom: 10px; width: 300px">
           <q-menu
             transition-show="scale"
             transition-hide="scale"
@@ -61,7 +61,7 @@
             </q-list>
           </q-menu>
         </q-btn>
-        <q-btn flat color="primary" style="margin-bottom: 10px; width: 220px" @click="UpdateAll()">Загрузить</q-btn>
+        <q-btn flat color="orange" style="margin-bottom: 10px; width: 220px" @click="UpdateAll()">Загрузить</q-btn>
       </q-card-section>
     </q-card>
 

@@ -1,29 +1,29 @@
 <template>
   <q-dialog v-model="show">
-    <q-card>
-      <q-card-section class="row items-center q-pb-none">
+    <q-card style="border-radius: 20px; display: flex; flex-direction: column;">
+      <q-card-section class="row items-center q-pb-none" style="margin-left: auto; margin-right: auto">
         <div class="text-h6">Создание нового товара (группа)</div>
         <q-space></q-space>
         <q-btn icon="close" flat round dense v-close-popup></q-btn>
       </q-card-section>
-      <q-card-section>
-        <q-input v-model="displayName" label="Отображаемое имя"></q-input>
-        <q-input outlined v-model="description" type="textarea" label="Описание"></q-input>
-        <q-input v-model="price" label="Цена"></q-input>
-        <q-input v-model="currency" label="Валюта"></q-input>
+      <q-card-section style="margin-left: auto; margin-right: auto; width: 95%">
+        <q-input v-model="displayName" color="orange" label="Отображаемое имя"></q-input>
+        <q-input outlined v-model="description" color="orange" type="textarea" label="Описание"></q-input>
+        <q-input v-model="price" color="orange" label="Цена"></q-input>
+        <q-input v-model="currency" color="orange" label="Валюта"></q-input>
         <UploadFile ref="file"></UploadFile>
         <q-separator></q-separator>
-        <q-checkbox v-model="local" label="Локальная группа"></q-checkbox>
-        <q-input v-if="!local" v-model="name_" label="Имя группы luckperms"></q-input>
-        <q-input v-if="!local" v-model="server" label="Сервер"></q-input>
-        <q-input v-if="!local" v-model="world" label="Мир"></q-input>
-        <q-input v-if="!local" v-model="context" label="Контекст"></q-input>
+        <q-checkbox v-model="local" color="orange" label="Локальная группа"></q-checkbox>
+        <q-input v-if="!local" color="orange" v-model="name_" label="Имя группы luckperms"></q-input>
+        <q-input v-if="!local" color="orange" v-model="server" label="Сервер"></q-input>
+        <q-input v-if="!local" color="orange" v-model="world" label="Мир"></q-input>
+        <q-input v-if="!local" color="orange" v-model="context" label="Контекст"></q-input>
         <q-separator></q-separator>
-        <q-input v-model="expireDays" label="Колличество дней"></q-input>
-        <q-input v-model="localName" label="Имя группы в SimpleCabinet 2"></q-input>
-        <q-checkbox v-model="stackable" label="Разрешить стакинг"></q-checkbox>
+        <q-input v-model="expireDays" color="orange" label="Колличество дней"></q-input>
+        <q-input v-model="localName" color="orange" label="Имя группы в SimpleCabinet 2"></q-input>
+        <q-checkbox v-model="stackable" color="orange" label="Разрешить стакинг"></q-checkbox>
       </q-card-section>
-      <q-card-actions>
+      <q-card-actions style="margin-left: auto; margin-right: auto">
         <q-btn flat color="orange" @click="send()">Загрузить</q-btn>
       </q-card-actions>
     </q-card>

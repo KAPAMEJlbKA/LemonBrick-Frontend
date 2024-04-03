@@ -1,5 +1,5 @@
 <template>
-<q-file v-model="file" label="Выберите файл для загрузки" accept=".png, image/png">
+<q-file v-model="file" color="orange" label="Выберите файл для загрузки" accept=".png, image/png">
 
 </q-file>
 </template>

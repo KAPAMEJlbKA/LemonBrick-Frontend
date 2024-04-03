@@ -1,5 +1,5 @@
 <template>
-  <q-card v-if="item.server === server_sort || server_sort === ''" style="width: 360px; height: 370px">
+  <q-card v-if="item.server === server_sort || server_sort === ''" style="width: 360px; height: 370px; border-radius: 10px">
     <q-card-section>
       {{ item.displayName }}
     </q-card-section>

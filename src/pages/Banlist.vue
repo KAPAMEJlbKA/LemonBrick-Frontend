@@ -3,7 +3,7 @@
         <div class="q-pa-md row items-start q-gutter-md">
           <ban-card :value="item" :key="item.id" v-for="item in items" />
         </div>
-        <q-pagination v-model="currentPage" :max="maxPages"></q-pagination>
+        <q-pagination v-model="currentPage" color="orange" :max="maxPages"></q-pagination>
     </q-page>
 </template>
 

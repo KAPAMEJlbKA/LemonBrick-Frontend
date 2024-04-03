@@ -1,7 +1,7 @@
 <template>
   <q-layout view="hHh Lpr lFf">
     <q-header elevated>
-      <q-toolbar>
+      <q-toolbar class="header">
         <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
 
         <q-btn flat icon="logout" @click="redirectMain"></q-btn>
@@ -10,17 +10,17 @@
 
     <q-drawer class="leftMenu" v-model="leftDrawerOpen" bordered>
       <q-list>
-        <q-item clickable :to="'/admin'">
+        <q-item clickable active-class="active" :to="'/admin'">
           <q-item-section>
             <q-item-label>Главная</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item clickable to="/users">
+        <q-item clickable active-class="active" to="/users">
           <q-item-section>
             <q-item-label>Пользователи</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item clickable to="/banlist">
+        <q-item clickable active-class="active" to="/banlist">
           <q-item-section>
             <q-item-label>Бан Лист</q-item-label>
           </q-item-section>
@@ -65,3 +65,11 @@ export default defineComponent({
   }
 })
 </script>
+<style>
+.header {
+  background-color: orange;
+}
+.active {
+  color: orange;
+}
+</style>

@@ -69,9 +69,6 @@ export default defineComponent({
     var currency = ref("LEM");
     var file = ref(null);
     async function send() {
-      console.log(file)
-      console.log(file.value)
-      console.log(file.value.name)
       var result = await $store.dispatch("api/request", {
           url: "shop/item/new",
           method: "PUT",

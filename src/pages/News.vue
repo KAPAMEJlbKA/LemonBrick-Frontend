@@ -2,11 +2,13 @@
   <div style="margin: 10px;" >
     <q-btn v-if="isAdmin" :color="'orange'" style="height: 40px; width: 40px;" @click="modalCreate.show = true"><img src="../assets/svg/create.svg"></q-btn>
   </div>
-  <div style="display: flex; flex-direction: column; justify-content: center; gap: 30px; margin-top: 20px; margin-bottom: 20px">
-    <News_card :news-item="news" :key="news.id" v-for="news in Newses" style="margin-right: auto; margin-left: auto"/>
+  <div style="display: flex; flex-direction: column; justify-content: center; margin-top: 20px; margin-bottom: 20px">
+    <div style="margin-right: auto; margin-left: auto;">
+      <News_card :news-item="news" :key="news.id" v-for="news in Newses" />
+    </div>
     <q-pagination v-model="currentPage" color="orange" :max="maxPages" style="margin-right: auto; margin-left: auto"></q-pagination>
   </div>
-  <CreateNewsDialog ref="modalCreate" style="position: sticky; top: 0"></CreateNewsDialog>
+  <CreateNewsDialog ref="modalCreate"></CreateNewsDialog>
 </template>
 
 <script>

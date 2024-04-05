@@ -2,8 +2,6 @@
 import { useQuasar } from "quasar";
 import { computed, defineComponent, ref, watch } from "vue";
 import { useStore, mapState } from "vuex";
-import EditShopGroupsDialog from "components/dialogs/EditShopGroupsDialog.vue";
-import EditShopItemDialog from "components/dialogs/EditShopItemDialog.vue";
 import EditNewsDialog from "components/dialogs/EditNewsDialog.vue";
 export default defineComponent({
   components: {EditNewsDialog},
@@ -32,17 +30,9 @@ export default defineComponent({
     <q-separator></q-separator>
     <q-card-section style="display: flex; flex-direction: column; height: 160px;">
       <h6 style="font-weight: 600; margin-top: 0; margin-bottom: 10px">{{newsItem.header}}</h6>
-      <span>{{newsItem.miniText}}</span>
       <span>{{newsItem.text}}</span>
     </q-card-section>
-    <q-card-actions>
-      <div style="margin-left: auto">
-        <q-btn v-if="isAdmin" flat @click="modalEdit.show = true" ><img src="../assets/svg/edit.svg" alt="Edit"></q-btn>
-        <q-btn flat @click="" ><img src="../assets/svg/next.svg" alt="Edit"></q-btn>
-      </div>
-    </q-card-actions>
   </q-card>
-  <edit-news-dialog ref="modalEdit" :news-id="newsItem.id"></edit-news-dialog>
 </template>
 
 <style scoped>

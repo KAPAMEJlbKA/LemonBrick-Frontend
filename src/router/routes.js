@@ -80,6 +80,13 @@ const routes = [
     ]
   },
   {
+    path: '/news/:id',
+    component: () => import('layouts/PageLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/NewsByID.vue') }
+    ]
+  },
+  {
     path: '/rules',
     component: () => import('layouts/PageLayout.vue'),
     children: [

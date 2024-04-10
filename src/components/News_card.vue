@@ -5,6 +5,7 @@ import { useStore, mapState } from "vuex";
 import EditShopGroupsDialog from "components/dialogs/EditShopGroupsDialog.vue";
 import EditShopItemDialog from "components/dialogs/EditShopItemDialog.vue";
 import EditNewsDialog from "components/dialogs/EditNewsDialog.vue";
+import {useRouter} from "vue-router";
 export default defineComponent({
   components: {EditNewsDialog},
   props: {
@@ -14,11 +15,16 @@ export default defineComponent({
   },
   setup(props) {
     const $store = useStore();
+    const $router = useRouter();
     const $q = useQuasar();
     const modalEdit = ref(false)
+    async function go() {
+      await $router.push("news/" + props.newsItem.id);
+    }
     return {
       isAdmin: computed(() => $store.getters["api/isAdmin"]),
-      modalEdit
+      modalEdit,
+      go
     }
   }
 })
@@ -38,7 +44,7 @@ export default defineComponent({
     <q-card-actions>
       <div style="margin-left: auto">
         <q-btn v-if="isAdmin" flat @click="modalEdit.show = true" ><img src="../assets/svg/edit.svg" alt="Edit"></q-btn>
-        <q-btn flat @click="" ><img src="../assets/svg/next.svg" alt="Edit"></q-btn>
+        <q-btn flat @click="go" ><img src="../assets/svg/next.svg" alt="Edit"></q-btn>
       </div>
     </q-card-actions>
   </q-card>

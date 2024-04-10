@@ -13,7 +13,7 @@
       </q-card>
       <q-card style="width: 700px; border-radius: 15px; margin-bottom: 30px">
         <q-card-section>
-          <News_comments :comments="comment" :key="comment.id" v-for="comment in Newses.comments"/>
+          <News_comments :comments="comment" :news="Newses" :key="comment.id" v-for="comment in Newses.comments"/>
         </q-card-section>
         <q-card-actions>
           <div style="display: flex;">
@@ -23,12 +23,6 @@
         </q-card-actions>
       </q-card>
     </div>
-  </div>
-  <div v-else-if="err404">
-    <h1>Ошибка 404: Новость не найдена</h1>
-  </div>
-  <div v-else>
-    <h1>Загрузка...</h1>
   </div>
 </template>
 

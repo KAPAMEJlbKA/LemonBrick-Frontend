@@ -100,6 +100,13 @@ const routes = [
       { path: '', component: () => import('pages/AdminPanel.vue') }
     ]
   },
+  {
+    path: '/play',
+    component: () => import('layouts/PageLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/StartPlay.vue') }
+    ]
+  },
   // Always leave this as last one,
   // but you can also remove it
   {

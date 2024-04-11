@@ -3,7 +3,7 @@
     <div class="container">
       <img src="../assets/icon.png" alt="LemonBrick" class="logo floating-element" @mouseover="animateLogo" @mouseout="resetLogo" />
       <h1 class="logo-text floating-element">LemonBrick</h1>
-      <a href="https://lemonbrick.by/skins/LemonBrick.exe" class="main-btn">Начать играть</a>
+      <a href="/play" class="main-btn">Начать играть</a>
       <server_info></server_info>
     </div>
   </q-page>

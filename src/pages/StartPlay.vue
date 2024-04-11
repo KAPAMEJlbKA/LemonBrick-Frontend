@@ -14,7 +14,7 @@
       <a href="/rules" class="main-btn">Правила</a>
       <h4 style="font-weight: 600; font-size: 3em; margin-right: auto; margin-left: auto; margin-bottom: 10px">3.Скачай и запусти лаунчер</h4>
       <p style="width: 600px; font-size: 1.2em">Для доступа к нашим серверам необходимо использовать наш собственный игровой лаунчер.</p>
-      <a href="https://lemonbrick.by/skins/LemonBrick.exe" class="main-btn">Лаунчер</a>
+      <a href="http://mirror.lemonbrick.by/Launcher.exe" class="main-btn">Лаунчер</a>
     </div>
   </div>
 </template>

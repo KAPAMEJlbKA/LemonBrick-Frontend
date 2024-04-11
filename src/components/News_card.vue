@@ -33,7 +33,7 @@ export default defineComponent({
 <template>
   <q-card style="width: 700px; height: 650px; border-radius: 15px; margin-bottom: 30px" >
     <q-card-section style="display: flex">
-      <img src="../assets/poster.jpeg" height="400" width="665" style="margin-left: auto; margin-right: auto; border-radius: 15px">
+      <img :src="newsItem.pictureURL" height="400" width="665" style="margin-left: auto; margin-right: auto; border-radius: 15px">
     </q-card-section>
     <q-separator></q-separator>
     <q-card-section style="display: flex; flex-direction: column; height: 160px;">

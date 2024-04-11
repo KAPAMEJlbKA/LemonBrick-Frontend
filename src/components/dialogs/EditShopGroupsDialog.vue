@@ -11,6 +11,7 @@
         <q-btn color="white" style="margin-bottom: 10px; width: 220px" text-color="black" label="Изминение иконку" @click="page = 'EditIcon'"/>
         <q-btn color="white" style="margin-bottom: 10px; width: 220px" text-color="black" label="Изминение цены" @click="page = 'EditPrice'"/>
         <q-btn color="red" style="margin-bottom: 10px; width: 220px" text-color="black" label="Изминение лимитов" @click="page = 'EditLimit'"/>
+        <q-btn color="red" style="margin-bottom: 10px; width: 220px" text-color="black" label="Удалить товар" icon="close" @click="Delete"/>
       </q-card-section>
       <q-card-section class="row items-center q-pb-none" style="flex-direction: column;" v-if="page === 'EditName'">
         <q-input v-model="name" color="orange" style="margin-bottom: 10px; width: 220px" label="Новое название"></q-input>
@@ -173,6 +174,28 @@ export default defineComponent({
         })
       }
     }
+    async function Delete() {
+      var result = await $store.dispatch("api/request", {
+        url: "shop/group/id/" + props.itemId + "/setavailable",
+        method: "POST",
+        body: {
+          available: false
+        },
+      });
+      if (result.ok) {
+        $q.notify({
+          "type": "positive",
+          "message": "Товар удалён"
+        })
+        show = false
+      } else {
+        var error = result.data
+        $q.notify({
+          "type": "negative",
+          "message": "Ошибка при удалении товара: SC" + error.code + ": " + error.error
+        })
+      }
+    }
     return {
       show,
       name,
@@ -186,7 +209,8 @@ export default defineComponent({
       UpdateName,
       UpdateIcon,
       UpdatePrice,
-      UpdateLimits
+      UpdateLimits,
+      Delete
     };
   },
 });

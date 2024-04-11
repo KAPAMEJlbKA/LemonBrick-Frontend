@@ -63,7 +63,7 @@ export default defineComponent({
       <head-avatar v-if="Current_User" :skin="Current_User.assets ? Current_User.assets.skin : null"></head-avatar>
     </q-avatar>
     <q-chat-message v-if="Current_User" :name="[Current_User.username]" :text="[comments.text]" bg-color="orange" />
-    <q-item v-if="isAdmin === true">
+    <q-item v-if="isAdmin">
       <img src="../assets/ellipsis-vertical.png" alt="" width="23" height="20" style="margin-top: 40px">
       <q-menu anchor="bottom end">
         <q-item clickable @click="deleteComments">

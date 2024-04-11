@@ -67,29 +67,9 @@ export default defineComponent({
               <q-item-label>Новости</q-item-label>
             </q-item-section>
           </q-item>
-          <q-item clickable class="nav-element" active-class="nav-element-active">
-            <q-item-section>
-              <q-item-label>
-                Карта
-                <q-menu auto-close class="dropmenu">
-                  <q-list dense class="dropmenu-list">
-                    <q-item clickable :to="'/map'" class="dropmenu-item">
-                      <q-item-section>Lemonila</q-item-section>
-                    </q-item>
-
-                  </q-list>
-                </q-menu>
-              </q-item-label>
-            </q-item-section>
-          </q-item>
           <q-item clickable :to="'/rules'" class="nav-element" active-class="nav-element-active">
             <q-item-section>
               <q-item-label>Правила</q-item-label>
-            </q-item-section>
-          </q-item>
-          <q-item clickable :to="'/about'" class="nav-element" active-class="nav-element-active">
-            <q-item-section>
-              <q-item-label>О нас</q-item-label>
             </q-item-section>
           </q-item>
         </q-list>

@@ -46,7 +46,7 @@ export default defineComponent({
           header: Header.value,
           miniText: miniText.value,
           text: Text.value,
-          PictureName: file.value.name
+          PictureURL: file.value.name
         },
       });
       if (result.ok) {
